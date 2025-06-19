@@ -1,0 +1,5 @@
+# Requirements for Assignment Grader
+nbformat>=5.7.0
+nbformat
+# The following are built-in Python modules and don't need installation:
+# pathlib, typing, statistics, hashlib, difflib, collections, datetime, logging, argparse, json, re, ast
