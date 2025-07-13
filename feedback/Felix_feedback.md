@@ -1,14 +1,24 @@
 # Feedback for Felix
 
-Generated on: 2025-06-19 04:21:00
+Generated on: 2025-07-13 07:27:11
 
 ## Individual Assignments
 
-**Average Grade:** 90/100
-**Total Submissions:** 7
+**Average Grade:** 93/100
+**Total Submissions:** 10
 **⚠️ AI Detection Flags:** 1 submissions
 
 ### Individual Submissions:
+
+#### Weekend_Assignment_21st-22nd_june .ipynb
+**Grade:** 100/100
+**AI Detection:** Very Low
+
+**Feedback:**
+- ✓ Good use of functions: 4 functions defined
+- ✓ Well documented: 1 functions have docstrings
+- ✓ Clean code style
+- ✓ No syntax errors
 
 #### temperature_converter.ipynb
 **Grade:** 100/100
@@ -36,6 +46,16 @@ Generated on: 2025-06-19 04:21:00
 - ✓ Good use of functions: 2 functions defined
 - ✓ No syntax errors
 
+#### Weekend assignment 6th - 7th July.ipynb
+**Grade:** 100/100
+**AI Detection:** Low
+
+**Feedback:**
+- ✓ Good use of functions: 4 functions defined
+- ✓ Well documented: 4 functions have docstrings
+- ✓ Clean code style
+- ✓ No syntax errors
+
 #### Assign1.ipynb
 **Grade:** 100/100
 **AI Detection:** Low
@@ -50,6 +70,16 @@ Generated on: 2025-06-19 04:21:00
 
 **Feedback:**
 - Minor style issues: 2 issues
+- ✓ No syntax errors
+
+#### Assignment-11_ 27th june.ipynb
+**Grade:** 100/100
+**AI Detection:** Very Low
+
+**Feedback:**
+- ✓ Good use of functions: 1 functions defined
+- ✓ Well documented: 1 functions have docstrings
+- ✓ Clean code style
 - ✓ No syntax errors
 
 #### Binary_Felix_.py.ipynb

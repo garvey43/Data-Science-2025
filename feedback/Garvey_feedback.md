@@ -1,14 +1,23 @@
 # Feedback for Garvey
 
-Generated on: 2025-06-19 04:21:00
+Generated on: 2025-07-13 07:27:11
 
 ## Individual Assignments
 
-**Average Grade:** 91.79/100
-**Total Submissions:** 14
+**Average Grade:** 93.42/100
+**Total Submissions:** 19
 **⚠️ AI Detection Flags:** 1 submissions
 
 ### Individual Submissions:
+
+#### Assignment2_7_2025.ipynb
+**Grade:** 100/100
+**AI Detection:** Low
+
+**Feedback:**
+- ✓ Good use of functions: 2 functions defined
+- ✓ Clean code style
+- ✓ No syntax errors
 
 #### garveyx.ipynb
 **Grade:** 100/100
@@ -24,6 +33,16 @@ Generated on: 2025-06-19 04:21:00
 **AI Detection:** Very Low
 
 **Feedback:**
+- ✓ Clean code style
+- ✓ No syntax errors
+
+#### 27_6_2025.ipynb
+**Grade:** 100/100
+**AI Detection:** Very Low
+
+**Feedback:**
+- ✓ Good use of functions: 1 functions defined
+- ✓ Well documented: 1 functions have docstrings
 - ✓ Clean code style
 - ✓ No syntax errors
 
@@ -50,6 +69,15 @@ Generated on: 2025-06-19 04:21:00
 **Feedback:**
 - Minor style issues: 2 issues
 - ✓ Good use of functions: 1 functions defined
+- ✓ No syntax errors
+
+#### 3_7_2025.ipynb
+**Grade:** 100/100
+**AI Detection:** Very Low
+
+**Feedback:**
+- ✓ Good use of functions: 3 functions defined
+- ✓ Clean code style
 - ✓ No syntax errors
 
 #### loaidng_converters.ipynb
@@ -85,6 +113,17 @@ Generated on: 2025-06-19 04:21:00
 - ✓ Clean code style
 - ✓ No syntax errors
 
+#### 23_6_2025.ipynb
+**Grade:** 90/100
+**AI Detection:** Medium
+
+**Feedback:**
+- Some patterns suggest possible AI assistance
+- ✓ Good use of functions: 4 functions defined
+- ✓ Well documented: 1 functions have docstrings
+- ✓ Clean code style
+- ✓ No syntax errors
+
 #### assign3.ipynb
 **Grade:** 65/100
 **AI Detection:** Very Low
@@ -106,6 +145,16 @@ Generated on: 2025-06-19 04:21:00
 **AI Detection:** Low
 
 **Feedback:**
+- ✓ Clean code style
+- ✓ No syntax errors
+
+#### weekend8_7_2025.ipynb
+**Grade:** 100/100
+**AI Detection:** Very Low
+
+**Feedback:**
+- ✓ Good use of functions: 2 functions defined
+- ✓ Well documented: 2 functions have docstrings
 - ✓ Clean code style
 - ✓ No syntax errors
 
@@ -163,6 +212,6 @@ Generated on: 2025-06-19 04:21:00
 
 ## Overall Recommendations
 
-- Good work overall. Focus on the feedback points to improve further.
+- Excellent work! Keep up the great coding practices.
 - ⚠️ **IMPORTANT:** Some submissions show signs of AI assistance. Please ensure all work is original.
 - If you used AI tools for learning, please disclose this and submit your own implementation.
