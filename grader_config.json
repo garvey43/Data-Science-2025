@@ -18,5 +18,10 @@
     "generate_individual_files": true,
     "include_code_suggestions": true,
     "include_ai_warnings": true
+  },
+  "automation": {
+    "auto_grade_delay": 1800,
+    "max_concurrent_jobs": 3,
+    "notification_enabled": true
   }
 }
