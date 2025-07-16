@@ -41,10 +41,13 @@ jobs:
 
     - name: Run assignment grading
       run: |
-        python grade_assignments.py \
-          --repo-path . \
-          --output grading_results.json \
-          $(if [ "${{ github.event.inputs.generate_feedback || 'false' }}" = "true" ]; then echo "--generate-feedback"; fi)
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ github.event.inputs.generate_feedback }}" = "true" ]; then
+          echo "Running grading with feedback generation..."
+          python grade_assignments.py --repo-path . --output grading_results.json --generate-feedback
+        else
+          echo "Running grading without feedback generation..."
+          python grade_assignments.py --repo-path . --output grading_results.json
+        fi
 
     - name: Upload grading results
       uses: actions/upload-artifact@v3
