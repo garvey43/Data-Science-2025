@@ -1,0 +1,27 @@
+{
+  "grading_weights": {
+    "syntax_correctness": 30,
+    "code_quality": 25,
+    "documentation": 15,
+    "functionality": 20,
+    "style": 10
+  },
+  "ai_detection": {
+    "enabled": true,
+    "strict_mode": false,
+    "penalty_high": 30,
+    "penalty_very_high": 50
+  },
+  "file_extensions": [".py", ".ipynb"],
+  "excluded_files": ["instruction.md", "desktop.ini", "__pycache__"],
+  "feedback_settings": {
+    "generate_individual_files": true,
+    "include_code_suggestions": true,
+    "include_ai_warnings": true
+  },
+  "automation": {
+    "auto_grade_delay": 1800,
+    "max_concurrent_jobs": 3,
+    "notification_enabled": true
+  }
+}
