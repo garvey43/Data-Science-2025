@@ -1,0 +1,167 @@
+.
+├── Assignments
+│   ├── Analyzer.ipynb
+│   ├── assignment1
+│   │   ├── Assign1.ipynb
+│   │   ├── Assign2.ipynb
+│   │   ├── data science Assigment 3.pdf
+│   │   ├── instructions.md
+│   │   └── Intro-Programing Project 1.pdf
+│   ├── Assignment10
+│   │   └── Assignment10.odt
+│   ├── Assignment 11
+│   │   └── Assigment11.odt
+│   ├── Assignment 12
+│   │   ├── Assignment12A.odt
+│   │   └── Assignment12.odt
+│   ├── Assignment 13
+│   │   └── Assignment13.odt
+│   ├── Assignment 14
+│   │   └── Assignment14.odt
+│   ├── Assignment 15
+│   │   └── Assignment15.odt
+│   ├── Assignment 16
+│   │   └── Assignment16.odt
+│   ├── assignment2
+│   │   └── instructions.md
+│   ├── Assignment3
+│   │   ├── Assigment3.docx
+│   │   ├── Assigment-3.odt
+│   │   ├── Iteration-Q.docx
+│   │   └── Project3.docx
+│   ├── Assignment4
+│   │   ├── Assignemt4.PNG
+│   │   ├── Assignment4.2.odt
+│   │   └── Assignment4.3.odt
+│   ├── Assignment5&6
+│   │   └── assign-6.odt
+│   ├── Assignment7
+│   │   └── Assigment-7.odt
+│   ├── Assignment8
+│   │   └── Assignment8.odt
+│   └── mid-assessment
+│       └── mid-term-e.docx
+├── Class_notes
+│   ├── week1
+│   │   ├── CS-topic 1..odt
+│   │   ├── git-html-css.odt
+│   │   ├── lecture1
+│   │   └── lecture2
+│   ├── Week10
+│   │   └── CS-Topic10.odt
+│   ├── Week 11
+│   │   └── CS-Topic11A.odt
+│   ├── Week 12
+│   │   ├── CS-Topic12B.odt
+│   │   ├── CS-Topic12.odt
+│   │   └── debug.docx
+│   ├── Week 13
+│   │   └── CS-Topic13.odt
+│   ├── Week 14
+│   │   └── CS-Topic14.odt
+│   ├── Week 15
+│   │   └── CS-Topic15.odt
+│   ├── Week 16
+│   │   └── CS-Topic16.odt
+│   ├── week2
+│   │   ├── CS-Topic2.odt
+│   │   ├── lecture1
+│   │   └── lecture2
+│   ├── week3
+│   │   ├── CS-Topic3.odt
+│   │   ├── Hackathon-sol.odt
+│   │   ├── Iteration-notes.odt
+│   │   ├── lecture1
+│   │   └── Project_Guide.odt
+│   ├── week4
+│   │   ├── CS-Topic4.odt
+│   │   └── lecture1
+│   ├── Week 5
+│   │   ├── CS-topic-5-A.odt
+│   │   └── CS-Topic-5-B.odt
+│   ├── Week 6
+│   │   ├── CS-Topic-6.odt
+│   │   ├── Loan_Interest_Calculator_Newton_Raphson.ipynb
+│   │   └── loan_interest_calculator_newton_raphson.py
+│   ├── Week 7
+│   │   └── lec-7-notes.odt
+│   ├── Week 8
+│   │   └── Lec-8-note.odt
+│   └── Week 9
+│       └── lec9-notes.odt
+├── feedback
+│   ├── bismark_feedback.md
+│   ├── Denzel_feedback.md
+│   ├── Elsa_feedback.md
+│   ├── Felix_feedback.md
+│   ├── Frank_feedback.md
+│   ├── Garvey_feedback.md
+│   ├── Group1_feedback.md
+│   ├── Group2_feedback.md
+│   ├── Group3_feedback.md
+│   ├── Group4_feedback.md
+│   ├── Hackathon_feedback.md
+│   ├── john_onyancha_feedback.md
+│   ├── Kigen_feedback.md
+│   ├── Lamech_feedback.md
+│   ├── Nahor_feedback.md
+│   ├── Nehemiah_feedback.md
+│   ├── solution_feedback.md
+│   ├── Teddy_feedback.md
+│   ├── vincent_feedback.md
+│   ├── Vincent_feedback.md
+│   └── wilberforce_feedback.md
+├── FinalAssignmentElsa.ipynb
+├── grade_assignments.py
+├── grader_config.json
+├── GRADER_README.md
+├── requirements.txt
+├── scripts
+│   ├── quick_start.sh
+│   └── test_grader.py
+├── structure.txt
+├── Submissions
+│   ├── assignments
+│   │   ├── bismark
+│   │   ├── Denzel
+│   │   ├── Elsa
+│   │   ├── Felix
+│   │   ├── Frank
+│   │   ├── Garvey
+│   │   ├── instruction.md
+│   │   ├── john_onyancha
+│   │   ├── Kigen
+│   │   ├── Lamech
+│   │   ├── Nahor
+│   │   ├── Nehemiah
+│   │   ├── solution
+│   │   ├── Teddy
+│   │   ├── Vincent
+│   │   └── wilberforce
+│   ├── groupwork
+│   │   ├── Group1
+│   │   ├── Group2
+│   │   ├── Group3
+│   │   ├── Group4
+│   │   ├── Hackathon
+│   │   └── solution
+│   └── projects
+│       ├── bismark
+│       ├── Denzel
+│       ├── Elsa
+│       ├── Felix
+│       ├── Frank
+│       ├── Garvey
+│       ├── instruction.md
+│       ├── john_onyancha
+│       ├── Kigen
+│       ├── Lamech
+│       ├── Nahor
+│       ├── Nehemiah
+│       ├── solution
+│       ├── Teddy
+│       ├── vincent
+│       └── wilberforce
+└── Untitled5.ipynb
+
+76 directories, 89 files

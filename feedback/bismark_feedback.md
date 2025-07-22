@@ -1,14 +1,33 @@
 # Feedback for bismark
 
-Generated on: 2025-06-19 04:21:00
+Generated on: 2025-07-13 07:27:11
 
 ## Individual Assignments
 
-**Average Grade:** 83.89/100
-**Total Submissions:** 9
+**Average Grade:** 89.64/100
+**Total Submissions:** 14
 **⚠️ AI Detection Flags:** 2 submissions
 
 ### Individual Submissions:
+
+#### Bismark6.ipynb
+**Grade:** 100/100
+**AI Detection:** Low
+
+**Feedback:**
+- ✓ Good use of functions: 3 functions defined
+- ✓ Clean code style
+- ✓ No syntax errors
+
+#### Bismark14.ipynb
+**Grade:** 100/100
+**AI Detection:** Very Low
+
+**Feedback:**
+- ✓ Good use of functions: 2 functions defined
+- ✓ Well documented: 2 functions have docstrings
+- ✓ Clean code style
+- ✓ No syntax errors
 
 #### Bismark2.ipynb
 **Grade:** 75/100
@@ -17,6 +36,34 @@ Generated on: 2025-06-19 04:21:00
 **Feedback:**
 - Code is too short - needs more implementation
 - Minor style issues: 1 issues
+- ✓ No syntax errors
+
+#### Bismark8.ipynb
+**Grade:** 100/100
+**AI Detection:** Low
+
+**Feedback:**
+- ✓ Good use of functions: 1 functions defined
+- ✓ Clean code style
+- ✓ No syntax errors
+
+#### Bismark9.ipynb
+**Grade:** 100/100
+**AI Detection:** Very Low
+
+**Feedback:**
+- ✓ Good use of functions: 3 functions defined
+- ✓ Clean code style
+- ✓ No syntax errors
+
+#### Bismark13.ipynb
+**Grade:** 100/100
+**AI Detection:** Low
+
+**Feedback:**
+- ✓ Good use of functions: 4 functions defined
+- ✓ Well documented: 4 functions have docstrings
+- ✓ Clean code style
 - ✓ No syntax errors
 
 #### binary_bismark.py
@@ -105,6 +152,6 @@ Generated on: 2025-06-19 04:21:00
 
 ## Overall Recommendations
 
-- Good work overall. Focus on the feedback points to improve further.
+- Excellent work! Keep up the great coding practices.
 - ⚠️ **IMPORTANT:** Some submissions show signs of AI assistance. Please ensure all work is original.
 - If you used AI tools for learning, please disclose this and submit your own implementation.
