@@ -1,217 +1,228 @@
 # Feedback for Garvey
 
-Generated on: 2025-07-13 07:27:11
+Generated on: 2025-07-28 00:39:10
 
 ## Individual Assignments
 
-**Average Grade:** 93.42/100
-**Total Submissions:** 19
-**⚠️ AI Detection Flags:** 1 submissions
+**Average Grade:** 87.13/100
+
+**Total Submissions:** 23
 
 ### Individual Submissions:
 
 #### Assignment2_7_2025.ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Good use of functions: 2 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### garveyx.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 4 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### Mide_terme__examination10_06_2025.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### Recursion_assignment.ipynb
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### 27_6_2025.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 1 functions defined
-- ✓ Well documented: 1 functions have docstrings
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### temperature_converter_py.ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### H_work.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### garvey_py (1).ipynb
-**Grade:** 95/100
-**AI Detection:** Low
 
-**Feedback:**
-- Minor style issues: 2 issues
-- ✓ Good use of functions: 1 functions defined
-- ✓ No syntax errors
+**Grade:** 79.0/100
+
+**Feedback:** Style Issues (3): -6 points; Low Documentation: -15.0 points
+
+---
 
 #### 3_7_2025.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 3 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### 18th_assignment2025.ipynb
+
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### loaidng_converters.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### invincible.ipynb
-**Grade:** 95/100
-**AI Detection:** Low
 
-**Feedback:**
-- Minor style issues: 1 issues
-- ✓ No syntax errors
+**Grade:** 71.0/100
+
+**Feedback:** Style Issues (7): -14 points; Low Documentation: -15.0 points
+
+---
 
 #### assignment4x.ipynb
-**Grade:** 40/100
-**AI Detection:** High
 
-**Feedback:**
-- Syntax errors found: Syntax error at line 69: invalid syntax
-- ⚠️ Possible AI assistance detected - Ensure this is your original work
-- ✓ Clean code style
+**Grade:** 75.0/100
+
+**Feedback:** Syntax Errors (1): -10 points; Low Documentation: -15.0 points
+
+---
 
 #### Assign2 (2).ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### R_non_numerics_assignment.ipynb
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### 17th_assignment_15_7_25 (1).ipynb
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### 23_6_2025.ipynb
-**Grade:** 90/100
-**AI Detection:** Medium
 
-**Feedback:**
-- Some patterns suggest possible AI assistance
-- ✓ Good use of functions: 4 functions defined
-- ✓ Well documented: 1 functions have docstrings
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 98.08/100
+
+**Feedback:** Low Documentation: -1.9 points
+
+---
 
 #### assign3.ipynb
-**Grade:** 65/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- Syntax errors found: Syntax error at line 2: unexpected indent
-- Minor style issues: 3 issues
+**Grade:** 65.0/100
+
+**Feedback:** Syntax Errors (1): -10 points; Style Issues (5): -10 points; Low Documentation: -15.0 points
+
+---
 
 #### coding.ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### Assign1 (1).ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### weekend8_7_2025.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 2 functions defined
-- ✓ Well documented: 2 functions have docstrings
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### 17_6_2025.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 1 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### user_py.ipynb
-**Grade:** 90/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- No comments found - add explanatory comments
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 ## Project Assignments
 
-**Average Grade:** 80/100
+**Average Grade:** 81.0/100
+
 **Total Submissions:** 3
-**⚠️ AI Detection Flags:** 1 submissions
 
 ### Individual Submissions:
 
 #### garveyx.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 4 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### Mide_terme__examination10_06_2025.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### assignment4x.ipynb
-**Grade:** 40/100
-**AI Detection:** High
 
-**Feedback:**
-- Syntax errors found: Syntax error at line 69: invalid syntax
-- ⚠️ Possible AI assistance detected - Ensure this is your original work
-- ✓ Clean code style
+**Grade:** 75.0/100
 
-## Overall Recommendations
+**Feedback:** Syntax Errors (1): -10 points; Low Documentation: -15.0 points
 
-- Excellent work! Keep up the great coding practices.
-- ⚠️ **IMPORTANT:** Some submissions show signs of AI assistance. Please ensure all work is original.
-- If you used AI tools for learning, please disclose this and submit your own implementation.
+---
+
