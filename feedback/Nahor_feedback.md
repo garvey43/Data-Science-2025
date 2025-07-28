@@ -1,86 +1,148 @@
 # Feedback for Nahor
 
-Generated on: 2025-07-13 07:27:11
+Generated on: 2025-07-28 00:39:10
 
 ## Individual Assignments
 
-**Average Grade:** 86.67/100
-**Total Submissions:** 6
-**⚠️ AI Detection Flags:** 2 submissions
+**Average Grade:** 82.87/100
+
+**Total Submissions:** 15
 
 ### Individual Submissions:
 
-#### Decimal Converter.ipynb
-**Grade:** 70/100
-**AI Detection:** High
+#### temperature_converter (1).ipynb
 
-**Feedback:**
-- ⚠️ Possible AI assistance detected - Ensure this is your original work
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### Decimal Converter.ipynb
+
+**Grade:** 65.0/100
+
+**Feedback:** Style Issues (12): -20 points; Low Documentation: -15.0 points
+
+---
 
 #### temperature_converter.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### guesswork t (1).ipynb
+
+**Grade:** 67.0/100
+
+**Feedback:** Syntax Errors (1): -10 points; Style Issues (4): -8 points; Low Documentation: -15.0 points
+
+---
+
+#### Digit Frequency Counter.ipynb
+
+**Grade:** 65.0/100
+
+**Feedback:** Style Issues (21): -20 points; Low Documentation: -15.0 points
+
+---
+
+#### personal.profile.ipynb
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
 
 #### Binaryconverter assignment.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### App.ipynb
+
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
+
+#### list Challenges.ipynb
+
+**Grade:** 75.0/100
+
+**Feedback:** Syntax Errors (1): -10 points; Low Documentation: -15.0 points
+
+---
+
+#### Epsilon Assignment.ipynb
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### Importing Assignment.ipynb
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### TP 4 Guess & Check.ipynb
-**Grade:** 80/100
-**AI Detection:** Low
 
-**Feedback:**
-- Code is too short - needs more implementation
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### CHALLENGE.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 1 functions defined
-- ✓ Well documented: 1 functions have docstrings
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### Nahor1 (1).ipynb
-**Grade:** 70/100
-**AI Detection:** High
 
-**Feedback:**
-- ⚠️ Possible AI assistance detected - Ensure this is your original work
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 65.0/100
+
+**Feedback:** Style Issues (21): -20 points; Low Documentation: -15.0 points
+
+---
+
+#### NAHOR14.ipynb
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 ## Project Assignments
 
-**Average Grade:** 100/100
+**Average Grade:** 85.0/100
+
 **Total Submissions:** 1
 
 ### Individual Submissions:
 
 #### NAHOR_midterm_CAT.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 1 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
 
-## Overall Recommendations
+**Feedback:** Low Documentation: -15.0 points
 
-- Good work overall. Focus on the feedback points to improve further.
-- ⚠️ **IMPORTANT:** Some submissions show signs of AI assistance. Please ensure all work is original.
-- If you used AI tools for learning, please disclose this and submit your own implementation.
+---
+

@@ -1,82 +1,148 @@
 # Feedback for Nehemiah
 
-Generated on: 2025-07-13 07:27:11
+Generated on: 2025-07-28 00:39:10
 
 ## Individual Assignments
 
-**Average Grade:** 93.33/100
-**Total Submissions:** 6
+**Average Grade:** 92.07/100
+
+**Total Submissions:** 15
 
 ### Individual Submissions:
 
-#### Binary_Nehemiah.py
-**Grade:** 75/100
-**AI Detection:** Very Low
+#### Assign5.py
 
-**Feedback:**
-- Code is too short - needs more implementation
-- Minor style issues: 1 issues
-- ✓ No syntax errors
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
+
+#### Assignment18.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
+
+#### Binary_Nehemiah.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
 
 #### Nehemiahassign.ipynb
-**Grade:** 90/100
-**AI Detection:** Medium
 
-**Feedback:**
-- Some patterns suggest possible AI assistance
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 65.0/100
+
+**Feedback:** Style Issues (12): -20 points; Low Documentation: -15.0 points
+
+---
+
+#### Assignment7.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
 
 #### Binary Snack Machine.ipynb
-**Grade:** 95/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- Minor style issues: 1 issues
-- ✓ Good use of functions: 1 functions defined
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
+
+#### Assignment8.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
+
+#### Assignment 11 exercise.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
 
 #### temperature_converter.py.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### challenge1.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### Assignment 15.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
+
+#### Assignment17.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
 
 #### Nehemia1.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
+
+#### Assignment6.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
+
+#### Assignment16.py
+
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
 
 ## Project Assignments
 
-**Average Grade:** 65/100
+**Average Grade:** 98.0/100
+
 **Total Submissions:** 1
 
 ### Individual Submissions:
 
 #### Nehemiah_Mid-Term_Test.py
-**Grade:** 65/100
-**AI Detection:** Medium
 
-**Feedback:**
-- Code is too short - needs more implementation
-- Minor style issues: 1 issues
-- Some patterns suggest possible AI assistance
-- ✓ No syntax errors
+**Grade:** 98.0/100
 
-## Overall Recommendations
+**Feedback:** Style Issues (1): -2 points
 
-- Good work overall. Focus on the feedback points to improve further.
+---
+
