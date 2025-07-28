@@ -1,142 +1,188 @@
 # Feedback for Teddy
 
-Generated on: 2025-07-13 07:27:11
+Generated on: 2025-07-28 00:39:10
 
 ## Individual Assignments
 
-**Average Grade:** 97.5/100
-**Total Submissions:** 12
+**Average Grade:** 93.79/100
+
+**Total Submissions:** 19
 
 ### Individual Submissions:
 
 #### studentprofile.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### teddyassdigcount.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### TeddyAss16.py
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### teddyass13.py
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Good use of functions: 4 functions defined
-- ✓ Well documented: 4 functions have docstrings
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### temperatureconverter.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### TeddyAss4.ipynb
-**Grade:** 80/100
-**AI Detection:** Low
 
-**Feedback:**
-- Code is too short - needs more implementation
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### TeddyAssignment2.ipynb
-**Grade:** 95/100
-**AI Detection:** Low
 
-**Feedback:**
-- Minor style issues: 1 issues
-- ✓ No syntax errors
+**Grade:** 81.0/100
+
+**Feedback:** Style Issues (2): -4 points; Low Documentation: -15.0 points
+
+---
+
+#### TeddyAss18.py
+
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### teddyass8.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 3 functions defined
-- ✓ Well documented: 1 functions have docstrings
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### TeddyAss10.py
+
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
+
+#### TeddyAss15.py
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### binaryteddytag.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### teddyass14.py
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Good use of functions: 2 functions defined
-- ✓ Well documented: 2 functions have docstrings
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### TeddyAssingment1.ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 79.0/100
+
+**Feedback:** Style Issues (3): -6 points; Low Documentation: -15.0 points
+
+---
+
+#### teddyass11.py
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### binarysnackconverter4.py
-**Grade:** 95/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- Minor style issues: 2 issues
-- ✓ No syntax errors
+**Grade:** 86.0/100
+
+**Feedback:** Style Issues (7): -14 points
+
+---
+
+#### TeddyAss17.py
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### teddyassguessnum.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### TeddyAss12.py
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 ## Project Assignments
 
-**Average Grade:** 95/100
+**Average Grade:** 88.93/100
+
 **Total Submissions:** 2
 
 ### Individual Submissions:
 
 #### analyzer.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 7 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### teddy_midterm.py
-**Grade:** 90/100
-**AI Detection:** Medium
 
-**Feedback:**
-- Some patterns suggest possible AI assistance
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 92.86/100
 
-## Overall Recommendations
+**Feedback:** Low Documentation: -7.1 points
 
-- Excellent work! Keep up the great coding practices.
+---
+

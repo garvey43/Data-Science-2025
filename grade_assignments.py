@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""
-Automated Assignment Grader for GitHub Class Repository
-Handles Python files, Jupyter notebooks, and detects AI-generated content
+"""Automated Assignment Grader for GitHub Class Repository
+
+Handles Python files, Jupyter notebooks, and detects AI-generated content.
+Refined for event-driven grading (e.g., on PR merge) by allowing grading for a specific student.
 """
 
 import os
@@ -17,490 +18,412 @@ import difflib
 import statistics
 from collections import defaultdict, Counter
 import logging
+import argparse # Added for argument parsing
+import csv # Added for CSV writing
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('grader.log'),
-        logging.StreamHandler()
-    ]
+    format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-class AIDetector:
-    """Detects AI-generated code using multiple heuristics"""
-    
-    def __init__(self):
-        # Common AI-generated code patterns
-        self.ai_patterns = [
-            r'#\s*This\s+code\s+(was\s+)?generated\s+by',
-            r'#\s*AI\s+generated',
-            r'#\s*Generated\s+using',
-            r'#\s*Created\s+with\s+the\s+help\s+of',
-            r'#\s*Note:\s+This\s+is\s+a\s+basic\s+implementation',
-            r'#\s*Here\'s\s+a\s+(simple|basic)\s+implementation',
-            r'def\s+\w+\([^)]*\):\s*\n\s*"""[^"]*implementation[^"]*"""',
-            r'#\s*You\s+can\s+customize\s+this\s+further',
-            r'#\s*Feel\s+free\s+to\s+modify',
-            r'#\s*This\s+should\s+work\s+for\s+most\s+cases'
-        ]
-        
-        # AI-style comment patterns
-        self.ai_comment_patterns = [
-            r'#\s*Step\s+\d+:',
-            r'#\s*\d+\.\s+',
-            r'#\s*First,?\s+we',
-            r'#\s*Then,?\s+we',
-            r'#\s*Finally,?\s+we',
-            r'#\s*Now,?\s+we',
-            r'#\s*Let\'s\s+',
-            r'#\s*We\s+can\s+',
-            r'#\s*This\s+will\s+',
-            r'#\s*Here\s+we\s+'
-        ]
-        
-        # Overly perfect variable names (AI tends to use very descriptive names)
-        self.ai_variable_patterns = [
-            r'user_input_\w+',
-            r'result_\w+',
-            r'final_\w+',
-            r'calculated_\w+',
-            r'processed_\w+',
-            r'converted_\w+',
-            r'validated_\w+'
-        ]
-
-    def detect_ai_content(self, code: str) -> Dict[str, Any]:
-        """Detect if code is likely AI-generated"""
-        score = 0
-        indicators = []
-        
-        # Check for AI patterns
-        for pattern in self.ai_patterns:
-            if re.search(pattern, code, re.IGNORECASE):
-                score += 3
-                indicators.append(f"AI pattern found: {pattern}")
-        
-        # Check comment patterns
-        ai_comment_count = 0
-        for pattern in self.ai_comment_patterns:
-            matches = re.findall(pattern, code, re.IGNORECASE)
-            ai_comment_count += len(matches)
-        
-        if ai_comment_count > 3:
-            score += 2
-            indicators.append(f"AI-style comments detected: {ai_comment_count}")
-        
-        # Check variable naming patterns
-        ai_var_count = 0
-        for pattern in self.ai_variable_patterns:
-            matches = re.findall(pattern, code, re.IGNORECASE)
-            ai_var_count += len(matches)
-        
-        if ai_var_count > 2:
-            score += 1
-            indicators.append(f"AI-style variable names: {ai_var_count}")
-        
-        # Check for overly verbose docstrings
-        docstring_pattern = r'"""[^"]{100,}"""'
-        verbose_docstrings = len(re.findall(docstring_pattern, code))
-        if verbose_docstrings > 2:
-            score += 1
-            indicators.append("Overly verbose docstrings detected")
-        
-        # Check for perfect error handling (AI tends to add comprehensive error handling)
-        try_except_count = len(re.findall(r'try:\s*\n.*?except.*?:', code, re.DOTALL))
-        if try_except_count > 3:
-            score += 1
-            indicators.append("Excessive error handling detected")
-        
-        # Check for code structure complexity (AI tends to create very structured code)
-        lines = code.split('\n')
-        comment_ratio = len([line for line in lines if line.strip().startswith('#')]) / max(len(lines), 1)
-        if comment_ratio > 0.3:
-            score += 1
-            indicators.append(f"High comment ratio: {comment_ratio:.2f}")
-        
-        return {
-            'ai_score': score,
-            'likelihood': self._get_likelihood(score),
-            'indicators': indicators,
-            'confidence': min(score * 10, 100)
-        }
-    
-    def _get_likelihood(self, score: int) -> str:
-        """Convert score to likelihood text"""
-        if score >= 5:
-            return "Very High"
-        elif score >= 3:
-            return "High"
-        elif score >= 2:
-            return "Medium"
-        elif score >= 1:
-            return "Low"
-        else:
-            return "Very Low"
-
 class CodeAnalyzer:
-    """Analyzes Python code for various metrics"""
-    
+    """Analyzes code quality, documentation, and potential AI generation."""
+
     def __init__(self):
-        self.ai_detector = AIDetector()
-    
+        self.patterns = {
+            'ai_indicators': [
+                r'\b(chatgpt|openai|gpt-3|gpt-4|copilot)\b',
+                r'\b(as an ai|as a language model|as an llm)\b',
+                r'\b(generated by|created by|powered by)\b.*\b(ai|artificial intelligence)\b'
+            ],
+            'complexity_indicators': [
+                r'(for|while)\s*\([^)]*\)\s*\{[^}]*\}\s*else\s*\{[^}]*\}', # Complex nested if/else/loops (C-style, example)
+                # Add more Python-specific complexity patterns if needed
+            ]
+        }
+        # Common Python built-in functions and keywords for basic vocabulary check
+        self.common_words = set(dir(__builtins__)) | {'if', 'else', 'for', 'while', 'def', 'class', 'import', 'from', 'as', 'with', 'try', 'except', 'finally', 'raise', 'assert', 'yield', 'lambda', 'and', 'or', 'not', 'in', 'is', 'None', 'True', 'False'}
+
     def analyze_python_file(self, file_path: str) -> Dict[str, Any]:
         """Analyze a Python file"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            return self.analyze_code(content, file_path)
+                code_content = f.read()
         except Exception as e:
-            logger.error(f"Error analyzing {file_path}: {e}")
-            return {'error': str(e)}
-    
+            logger.error(f"Could not read {file_path}: {e}")
+            return {}
+
+        # Analyze the content directly
+        analysis = self._analyze_code_content(code_content, file_path)
+        analysis['file_type'] = 'Python'
+        return analysis
+
     def analyze_jupyter_notebook(self, file_path: str) -> Dict[str, Any]:
         """Analyze a Jupyter notebook"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 nb = nbformat.read(f, as_version=4)
-            
-            # Extract code from cells
-            code_cells = [cell['source'] for cell in nb.cells if cell.cell_type == 'code']
-            combined_code = '\n'.join(code_cells)
-            
-            analysis = self.analyze_code(combined_code, file_path)
-            analysis['notebook_info'] = {
-                'total_cells': len(nb.cells),
-                'code_cells': len(code_cells),
-                'markdown_cells': len([cell for cell in nb.cells if cell.cell_type == 'markdown'])
-            }
-            
-            return analysis
         except Exception as e:
-            logger.error(f"Error analyzing notebook {file_path}: {e}")
-            return {'error': str(e)}
-    
-    def analyze_code(self, code: str, file_path: str) -> Dict[str, Any]:
-        """Analyze code content"""
+            logger.error(f"Could not read {file_path}: {e}")
+            return {}
+
+        total_code_lines = 0
+        total_docstring_lines = 0
+        all_syntax_errors = []
+        all_style_issues = []
+        all_ai_detections = []
+        complexity_scores = []
+        all_cell_analyses = []
+
+        for i, cell in enumerate(nb.cells):
+            if cell.cell_type == 'code':
+                code_content = cell.source
+                if not code_content.strip(): # Skip empty code cells
+                    continue
+                total_code_lines += len(code_content.splitlines())
+
+                # Analyze the code content of the cell directly
+                cell_identifier = f"{file_path}#cell-{i}"
+                cell_analysis = self._analyze_code_content(code_content, cell_identifier)
+                all_cell_analyses.append(cell_analysis)
+
+                # Aggregate results from the cell analysis
+                total_docstring_lines += cell_analysis.get('docstring_lines', 0)
+                all_syntax_errors.extend(cell_analysis.get('syntax_errors', []))
+                all_style_issues.extend(cell_analysis.get('style_issues', []))
+                all_ai_detections.append(cell_analysis.get('ai_detection', {}))
+                complexity_scores.append(cell_analysis.get('complexity_score', 0))
+
+
+        # --- Aggregate Results Across Cells ---
+
+        # Aggregate AI detection results from cells
+        # Simple approach: count high likelihood detections
+        high_ai_cells = sum(1 for detection in all_ai_detections if detection.get('likelihood') in ['High', 'Very High'])
+        medium_ai_cells = sum(1 for detection in all_ai_detections if detection.get('likelihood') == 'Medium')
+
+        # Determine overall likelihood based on cell results
+        if high_ai_cells > 1: # Arbitrary threshold
+            overall_likelihood = 'High'
+            overall_explanation = f"Multiple cells ({high_ai_cells}) show high likelihood of AI generation."
+        elif high_ai_cells == 1:
+            overall_likelihood = 'High' # Or Medium, depending on strictness
+            overall_explanation = f"One cell shows high likelihood of AI generation."
+        elif medium_ai_cells > 2:
+             overall_likelihood = 'Medium'
+             overall_explanation = f"Several cells ({medium_ai_cells}) show medium likelihood."
+        elif medium_ai_cells >= 1:
+             overall_likelihood = 'Medium'
+             overall_explanation = f"One or two cells ({medium_ai_cells}) show medium likelihood."
+        else:
+            overall_likelihood = 'Low' # Default if no strong indicators
+            overall_explanation = "No strong AI indicators found in cells."
+
+        overall_ai_detection = {
+            'patterns_found': any(d.get('patterns_found', False) for d in all_ai_detections),
+            'explanation': overall_explanation,
+            'likelihood': overall_likelihood
+        }
+
+        # Calculate average complexity score
+        avg_complexity_score = sum(complexity_scores) / len(complexity_scores) if complexity_scores else 0
+
         analysis = {
-            'file_path': file_path,
-            'lines_of_code': len([line for line in code.split('\n') if line.strip()]),
-            'functions': self._extract_functions(code),
-            'classes': self._extract_classes(code),
-            'imports': self._extract_imports(code),
-            'complexity': self._calculate_complexity(code),
-            'documentation': self._check_documentation(code),
-            'ai_detection': self.ai_detector.detect_ai_content(code),
-            'syntax_errors': self._check_syntax(code),
-            'style_issues': self._check_style(code)
+            'file_type': 'Jupyter Notebook',
+            'lines_of_code': total_code_lines,
+            'docstring_lines': total_docstring_lines,
+            'syntax_errors': all_syntax_errors,
+            'style_issues': all_style_issues,
+            'ai_detection': overall_ai_detection,
+            'complexity_score': avg_complexity_score,
+            # Optional: Add detailed cell analysis if needed
+            # 'cell_analyses': all_cell_analyses
         }
-        
         return analysis
-    
-    def _extract_functions(self, code: str) -> List[str]:
-        """Extract function names from code"""
-        try:
-            tree = ast.parse(code)
-            functions = []
-            for node in ast.walk(tree):
-                if isinstance(node, ast.FunctionDef):
-                    functions.append(node.name)
-            return functions
-        except:
-            return []
-    
-    def _extract_classes(self, code: str) -> List[str]:
-        """Extract class names from code"""
-        try:
-            tree = ast.parse(code)
-            classes = []
-            for node in ast.walk(tree):
-                if isinstance(node, ast.ClassDef):
-                    classes.append(node.name)
-            return classes
-        except:
-            return []
-    
-    def _extract_imports(self, code: str) -> List[str]:
-        """Extract import statements"""
-        imports = []
-        for line in code.split('\n'):
-            line = line.strip()
-            if line.startswith('import ') or line.startswith('from '):
-                imports.append(line)
-        return imports
-    
-    def _calculate_complexity(self, code: str) -> Dict[str, int]:
-        """Calculate code complexity metrics"""
-        lines = code.split('\n')
-        return {
-            'total_lines': len(lines),
-            'code_lines': len([line for line in lines if line.strip() and not line.strip().startswith('#')]),
-            'comment_lines': len([line for line in lines if line.strip().startswith('#')]),
-            'blank_lines': len([line for line in lines if not line.strip()]),
-            'indentation_levels': self._max_indentation(code)
+
+    def _analyze_code_content(self, code_content: str, source_identifier: str) -> Dict[str, Any]:
+        """
+        Analyze the content of code (from a .py file or a notebook cell).
+        source_identifier is for logging/context (e.g., filename or cell reference)
+        """
+        analysis = {
+            'lines_of_code': len(code_content.splitlines()),
+            'docstring_lines': self._count_docstrings(code_content),
+            'syntax_errors': self._check_syntax(code_content),
+            'style_issues': self._check_style(code_content),
+            'ai_detection': self._detect_ai_patterns(code_content),
+            'complexity_score': self._assess_complexity(code_content)
         }
-    
-    def _max_indentation(self, code: str) -> int:
-        """Find maximum indentation level"""
-        max_indent = 0
-        for line in code.split('\n'):
-            if line.strip():
-                indent = len(line) - len(line.lstrip())
-                max_indent = max(max_indent, indent // 4)  # Assuming 4-space indentation
-        return max_indent
-    
-    def _check_documentation(self, code: str) -> Dict[str, Any]:
-        """Check documentation quality"""
-        docstring_count = len(re.findall(r'"""[^"]*"""', code)) + len(re.findall(r"'''[^']*'''", code))
-        comment_count = len(re.findall(r'#.*', code))
-        
-        return {
-            'docstrings': docstring_count,
-            'comments': comment_count,
-            'documented_functions': self._count_documented_functions(code)
-        }
-    
-    def _count_documented_functions(self, code: str) -> int:
-        """Count functions with docstrings"""
+        return analysis
+
+    def _count_docstrings(self, code: str) -> int:
+        """Count lines in docstrings"""
         try:
             tree = ast.parse(code)
-            documented = 0
-            for node in ast.walk(tree):
-                if isinstance(node, ast.FunctionDef):
-                    if (node.body and isinstance(node.body[0], ast.Expr) and 
-                        isinstance(node.body[0].value, ast.Constant) and 
-                        isinstance(node.body[0].value.value, str)):
-                        documented += 1
-            return documented
-        except:
-            return 0
-    
+        except SyntaxError:
+            return 0 # Cannot count if syntax is broken
+
+        documented = 0
+        for node in ast.walk(tree):
+            # Check for function or class docstrings (first statement being a string)
+            if isinstance(node, (ast.FunctionDef, ast.ClassDef, ast.Module)):
+                 # Safely get docstring, handle cases where it might be None
+                 docstring = ast.get_docstring(node, clean=False)
+                 if docstring:
+                    documented += len(docstring.splitlines())
+                 # Alternative check (older Python compatibility or edge cases)
+                 # elif (node.body and isinstance(node.body[0], ast.Expr) and
+                 #     isinstance(node.body[0].value, (ast.Constant, ast.Str))):
+                 #    # This is less reliable for counting lines, ast.get_docstring is preferred
+                 #    documented += 1 # Count the statement itself, not lines
+        return documented
+
     def _check_syntax(self, code: str) -> List[str]:
         """Check for syntax errors"""
         errors = []
         try:
             ast.parse(code)
         except SyntaxError as e:
-            errors.append(f"Syntax error at line {e.lineno}: {e.msg}")
+            errors.append(f"Syntax error at line {getattr(e, 'lineno', 'unknown')}: {e.msg}")
         except Exception as e:
             errors.append(f"Parse error: {str(e)}")
         return errors
-    
+
     def _check_style(self, code: str) -> List[str]:
         """Basic style checking"""
         issues = []
-        lines = code.split('\n')
-        
+        lines = code.splitlines()
         for i, line in enumerate(lines, 1):
-            if len(line) > 120:
-                issues.append(f"Line {i}: Line too long ({len(line)} characters)")
-            
-            if line.endswith(' '):
-                issues.append(f"Line {i}: Trailing whitespace")
-            
-            if '    ' in line and '\t' in line:
-                issues.append(f"Line {i}: Mixed tabs and spaces")
-        
+            if len(line) > 100:  # Line too long
+                issues.append(f"Line {i} exceeds 100 characters")
+            if '\t' in line:  # Tabs used for indentation
+                issues.append(f"Line {i} uses tab for indentation")
         return issues
 
+    def _detect_ai_patterns(self, content: str) -> Dict[str, Any]:
+        """Detect potential AI-generated content patterns"""
+        content_lower = content.lower()
+        found_patterns = []
+        for pattern in self.patterns['ai_indicators']:
+            if re.search(pattern, content_lower):
+                found_patterns.append(pattern)
+
+        # Simple heuristic: Check for unusually high ratio of common words (might indicate template/generic text)
+        words = re.findall(r'\b\w+\b', content_lower)
+        if words:
+            common_word_ratio = len([w for w in words if w in self.common_words]) / len(words)
+            if common_word_ratio > 0.9: # Arbitrary high threshold
+                 found_patterns.append("Unusually high ratio of common programming words (potential template)")
+
+        likelihood = 'Very Low'
+        explanation = "No strong indicators of AI generation found."
+
+        if found_patterns:
+            # Basic scoring based on number of patterns found
+            if len(found_patterns) >= 3:
+                likelihood = 'High'
+                explanation = f"Multiple AI indicators detected: {', '.join(found_patterns[:3])}..."
+            elif len(found_patterns) >= 1:
+                likelihood = 'Medium'
+                explanation = f"Some AI indicators detected: {', '.join(found_patterns)}"
+
+        return {
+            'patterns_found': bool(found_patterns),
+            'patterns': found_patterns,
+            'explanation': explanation,
+            'likelihood': likelihood
+        }
+
+    def _assess_complexity(self, code: str) -> float:
+        """Basic complexity assessment (placeholder)"""
+        # A very simple metric: ratio of non-empty lines to total lines
+        lines = code.splitlines()
+        non_empty_lines = [line for line in lines if line.strip()]
+        if not lines:
+            return 0.0
+        return len(non_empty_lines) / len(lines) if len(lines) > 0 else 0.0
+
+
 class AssignmentGrader:
-    """Main grading system"""
-    
-    def __init__(self, repo_path: str):
-        self.repo_path = Path(repo_path)
+    """Main grader class"""
+
+    def __init__(self, repo_path: str = '.', target_student: Optional[str] = None):
+        self.repo_path = Path(repo_path).resolve()
         self.submissions_path = self.repo_path / "Submissions"
-        self.assignments_path = self.repo_path / "Assignments"
+        self.assignments_path = self.repo_path / "Assignments" # Might be used if comparing against templates
         self.analyzer = CodeAnalyzer()
         self.results = {}
-        
+        self.target_student = target_student # Store the target student name
+
     def grade_all_assignments(self) -> Dict[str, Any]:
-        """Grade all student submissions"""
+        """Grade all student submissions (or only the target student if specified)"""
         logger.info("Starting assignment grading process...")
-        
+        if self.target_student:
+            logger.info(f"Grading restricted to student: {self.target_student}")
+
         # Grade individual assignments
         individual_path = self.submissions_path / "assignments"
         if individual_path.exists():
-            self._grade_directory(individual_path, "individual")
-        
-        # Grade group projects
+            self._grade_directory(individual_path, 'individual')
+
+        # Grade group work
         group_path = self.submissions_path / "groupwork"
         if group_path.exists():
-            self._grade_directory(group_path, "group")
-        
+            self._grade_directory(group_path, 'group')
+
         # Grade projects
-        projects_path = self.submissions_path / "projects"
-        if projects_path.exists():
-            self._grade_directory(projects_path, "project")
-        
-        # Generate summary report
-        self._generate_summary_report()
-        
+        project_path = self.submissions_path / "projects"
+        if project_path.exists():
+            self._grade_directory(project_path, 'project')
+
+        # Generate summary statistics (overall, not used for dashboard log which is per-student-event)
+        self._generate_summary()
         return self.results
-    
+
     def _grade_directory(self, directory: Path, assignment_type: str):
         """Grade submissions in a directory"""
         logger.info(f"Grading {assignment_type} submissions in {directory}")
-        
-        for student_dir in directory.iterdir():
-            if student_dir.is_dir() and not student_dir.name.startswith('.'):
-                student_name = student_dir.name
-                logger.info(f"Grading {student_name}'s submissions...")
-                
-                student_results = self._grade_student_submissions(student_dir, student_name)
-                
-                if student_name not in self.results:
-                    self.results[student_name] = {}
-                
-                self.results[student_name][assignment_type] = student_results
-    
+
+        # If a target student is specified, only process that student's directory
+        if self.target_student:
+            student_dir = directory / self.target_student
+            if student_dir.is_dir():
+                logger.info(f"Grading {self.target_student}'s submissions in {assignment_type}...")
+                student_results = self._grade_student_submissions(student_dir, self.target_student)
+                if self.target_student not in self.results:
+                    self.results[self.target_student] = {}
+                self.results[self.target_student][assignment_type] = student_results
+            else:
+                logger.info(f"Target student '{self.target_student}' directory not found in {directory}. Skipping.")
+        else:
+            # Original logic: grade all students
+            for student_dir in directory.iterdir():
+                if student_dir.is_dir():
+                    student_name = student_dir.name
+                    logger.info(f"Grading {student_name}'s submissions in {assignment_type}...")
+                    student_results = self._grade_student_submissions(student_dir, student_name)
+                    if student_name not in self.results:
+                        self.results[student_name] = {}
+                    self.results[student_name][assignment_type] = student_results
+
     def _grade_student_submissions(self, student_dir: Path, student_name: str) -> Dict[str, Any]:
         """Grade all submissions for a student"""
         submissions = []
-        
         for file_path in student_dir.rglob("*"):
             if file_path.is_file() and self._is_gradeable_file(file_path):
                 logger.info(f"Analyzing {file_path}")
-                
                 if file_path.suffix == '.py':
                     analysis = self.analyzer.analyze_python_file(str(file_path))
                 elif file_path.suffix == '.ipynb':
                     analysis = self.analyzer.analyze_jupyter_notebook(str(file_path))
                 else:
-                    continue
-                
+                    continue # Should not happen due to _is_gradeable_file check, but safe
+
                 # Generate grade and feedback
                 grade_info = self._calculate_grade(analysis)
-                
                 submission = {
                     'file_name': file_path.name,
                     'file_path': str(file_path.relative_to(self.repo_path)),
                     'analysis': analysis,
                     'grade': grade_info['grade'],
                     'feedback': grade_info['feedback'],
-                    'ai_detection': analysis.get('ai_detection', {}),
-                    'timestamp': datetime.now().isoformat()
+                    'ai_detection': analysis.get('ai_detection', {})
                 }
-                
                 submissions.append(submission)
-        
-        return {
-            'submissions': submissions,
-            'total_submissions': len(submissions),
-            'average_grade': self._calculate_average_grade(submissions),
-            'ai_flagged': len([s for s in submissions if s['ai_detection'].get('likelihood') in ['High', 'Very High']])
-        }
-    
-    def _is_gradeable_file(self, file_path: Path) -> bool:
-        """Check if file should be graded"""
-        return (file_path.suffix in ['.py', '.ipynb'] and 
-                not file_path.name.startswith('.') and
-                file_path.name not in ['instruction.md', 'desktop.ini'])
-    
-    def _calculate_grade(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
-        """Calculate grade based on analysis"""
-        if 'error' in analysis:
-            return {
-                'grade': 0,
-                'feedback': f"Error analyzing file: {analysis['error']}"
-            }
-        
-        score = 100
-        feedback = []
-        
-        # Syntax errors
-        if analysis.get('syntax_errors'):
-            score -= 30
-            feedback.append(f"Syntax errors found: {'; '.join(analysis['syntax_errors'])}")
-        
-        # Code quality
-        complexity = analysis.get('complexity', {})
-        if complexity.get('code_lines', 0) < 5:
-            score -= 20
-            feedback.append("Code is too short - needs more implementation")
-        
-        # Documentation
-        doc_info = analysis.get('documentation', {})
-        if doc_info.get('comments', 0) == 0:
-            score -= 10
-            feedback.append("No comments found - add explanatory comments")
-        
-        # Style issues
-        style_issues = analysis.get('style_issues', [])
-        if len(style_issues) > 5:
-            score -= 15
-            feedback.append(f"Multiple style issues found: {len(style_issues)} issues")
-        elif style_issues:
-            score -= 5
-            feedback.append(f"Minor style issues: {len(style_issues)} issues")
-        
-        # AI detection penalty
-        ai_info = analysis.get('ai_detection', {})
-        if ai_info.get('likelihood') == 'Very High':
-            score -= 50
-            feedback.append("⚠️ HIGH PROBABILITY OF AI-GENERATED CODE - Please submit original work")
-        elif ai_info.get('likelihood') == 'High':
-            score -= 30
-            feedback.append("⚠️ Possible AI assistance detected - Ensure this is your original work")
-        elif ai_info.get('likelihood') == 'Medium':
-            score -= 10
-            feedback.append("Some patterns suggest possible AI assistance")
-        
-        # Positive feedback
-        if analysis.get('functions'):
-            feedback.append(f"✓ Good use of functions: {len(analysis['functions'])} functions defined")
-        
-        if doc_info.get('documented_functions', 0) > 0:
-            feedback.append(f"✓ Well documented: {doc_info['documented_functions']} functions have docstrings")
-        
-        if not style_issues:
-            feedback.append("✓ Clean code style")
-        
-        if not analysis.get('syntax_errors'):
-            feedback.append("✓ No syntax errors")
-        
-        score = max(0, min(100, score))  # Clamp between 0 and 100
-        
-        return {
-            'grade': score,
-            'feedback': feedback
-        }
-    
-    def _calculate_average_grade(self, submissions: List[Dict]) -> float:
-        """Calculate average grade for submissions"""
-        if not submissions:
-            return 0
-        
+
+        # Aggregate results for this student and assignment type
+        total_submissions = len(submissions)
         grades = [s['grade'] for s in submissions if isinstance(s['grade'], (int, float))]
-        return round(statistics.mean(grades), 2) if grades else 0
-    
-    def _generate_summary_report(self):
-        """Generate summary report"""
-        total_students = len(self.results)
-        total_submissions = sum(
-            len(student_data.get('individual', {}).get('submissions', [])) +
-            len(student_data.get('group', {}).get('submissions', [])) +
-            len(student_data.get('project', {}).get('submissions', []))
-            for student_data in self.results.values()
-        )
-        
+        average_grade = round(statistics.mean(grades), 2) if grades else 0
+        ai_flagged = sum(1 for s in submissions if s.get('ai_detection', {}).get('likelihood') in ['High', 'Very High'])
+
+        return {
+            'total_submissions': total_submissions,
+            'average_grade': average_grade,
+            'ai_flagged': ai_flagged,
+            'submissions': submissions
+        }
+
+    def _is_gradeable_file(self, file_path: Path) -> bool:
+        """Check if a file should be graded"""
+        return file_path.suffix in ['.py', '.ipynb'] and not file_path.name.startswith('.')
+
+    def _calculate_grade(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """Calculate grade and generate feedback based on analysis"""
+        if not analysis:
+            return {'grade': 0, 'feedback': "File could not be analyzed."}
+
+        score = 100.0
+        feedback = []
+
+        # Deduct points for syntax errors
+        syntax_errors = analysis.get('syntax_errors', [])
+        if syntax_errors:
+            deduction = min(len(syntax_errors) * 10, 50) # Max 50 points off
+            score -= deduction
+            feedback.append(f"Syntax Errors ({len(syntax_errors)}): -{deduction} points")
+
+        # Deduct points for style issues
+        style_issues = analysis.get('style_issues', [])
+        if style_issues:
+            deduction = min(len(style_issues) * 2, 20) # Max 20 points off
+            score -= deduction
+            feedback.append(f"Style Issues ({len(style_issues)}): -{deduction} points")
+
+        # Deduct points for low documentation
+        lines_of_code = analysis.get('lines_of_code', 0)
+        docstring_lines = analysis.get('docstring_lines', 0)
+        if lines_of_code > 10: # Only check if there's substantial code
+            doc_ratio = docstring_lines / lines_of_code if lines_of_code > 0 else 0
+            if doc_ratio < 0.1: # Less than 10% documentation
+                deduction = max(0, (0.1 - doc_ratio) * 100 * 5) # Scale deduction
+                score -= min(deduction, 15) # Max 15 points off
+                feedback.append(f"Low Documentation: -{min(deduction, 15):.1f} points")
+
+        # Deduct points for potential AI use (high likelihood)
+        ai_detection = analysis.get('ai_detection', {})
+        ai_likelihood = ai_detection.get('likelihood', 'Very Low')
+        if ai_likelihood == 'Very High':
+            score -= 30
+            feedback.append("Potential AI Use (Very High Likelihood): -30 points")
+        elif ai_likelihood == 'High':
+            score -= 20
+            feedback.append("Potential AI Use (High Likelihood): -20 points")
+        elif ai_likelihood == 'Medium':
+             score -= 10
+             feedback.append("Potential AI Use (Medium Likelihood): -10 points")
+
+        # Ensure score is within bounds
+        score = max(0, min(100, score))
+
+        return {
+            'grade': round(score, 2),
+            'feedback': '; '.join(feedback) if feedback else "Good work!"
+        }
+
+    def _generate_summary(self):
+        """Generate overall summary statistics"""
         all_grades = []
         ai_flagged_count = 0
-        
-        for student_data in self.results.values():
-            for assignment_type in ['individual', 'group', 'project']:
-                if assignment_type in student_data:
-                    submissions = student_data[assignment_type].get('submissions', [])
-                    for submission in submissions:
-                        if isinstance(submission['grade'], (int, float)):
-                            all_grades.append(submission['grade'])
-                        
-                        ai_likelihood = submission['ai_detection'].get('likelihood', 'Very Low')
-                        if ai_likelihood in ['High', 'Very High']:
-                            ai_flagged_count += 1
-        
+        total_submissions = 0
+        total_students = 0
+
+        for student_name, student_data in self.results.items():
+            if student_name == '_summary':
+                continue
+            total_students += 1
+            for assignment_type, type_data in student_data.items():
+                submissions = type_data.get('submissions', [])
+                for submission in submissions:
+                    total_submissions += 1
+                    if isinstance(submission['grade'], (int, float)):
+                        all_grades.append(submission['grade'])
+                    ai_likelihood = submission['ai_detection'].get('likelihood', 'Very Low')
+                    if ai_likelihood in ['High', 'Very High']:
+                        ai_flagged_count += 1
+
         summary = {
             'total_students': total_students,
             'total_submissions': total_submissions,
@@ -515,104 +438,194 @@ class AssignmentGrader:
             'ai_flagged_submissions': ai_flagged_count,
             'ai_flagged_percentage': round((ai_flagged_count / max(total_submissions, 1)) * 100, 2)
         }
-        
         self.results['_summary'] = summary
         logger.info(f"Grading complete: {total_students} students, {total_submissions} submissions")
-    
+
+    # --- NEW METHOD: Append to Dashboard Log ---
+    def _append_to_dashboard_log(self, output_csv_path='dashboard_grading_history.csv'):
+        """
+        Appends summary data for the target student to a CSV log file for the dashboard.
+        This is called only if a specific student was graded (--student argument).
+        """
+        # Check if the method should run
+        if not self.target_student or self.target_student not in self.results:
+            logger.debug("No target student specified or student not found in results. Skipping dashboard log append.")
+            return
+
+        student_data = self.results[self.target_student]
+        # Note: self.results['_summary'] might not be fully populated if only one student was graded.
+        # We calculate summary stats directly from the student's data.
+
+        # Prepare data for a single row representing this grading event for this student
+        timestamp = datetime.now().isoformat() + 'Z' # UTC ISO format
+        student_name = self.target_student
+
+        # Calculate overall metrics for this student from their specific results
+        # We need to aggregate across potentially multiple assignment types (individual, project, etc.)
+        total_submissions = 0
+        sum_of_weighted_averages = 0.0 # Sum of (average_grade * total_submissions) for each type
+        ai_flags = 0
+
+        # Iterate through the assignment types graded for this specific student (e.g., 'individual', 'project')
+        for assignment_type, type_data in student_data.items():
+            if isinstance(type_data, dict): # Ensure type_data is a dict (not _summary etc.)
+                total_submissions_for_type = type_data.get('total_submissions', 0)
+                average_grade_for_type = type_data.get('average_grade', 0)
+                ai_flags_for_type = type_data.get('ai_flagged', 0)
+
+                total_submissions += total_submissions_for_type
+                # Weight the average grade by the number of submissions for that type
+                sum_of_weighted_averages += average_grade_for_type * total_submissions_for_type
+                ai_flags += ai_flags_for_type
+
+        # Avoid division by zero if no submissions were found/graded for the student
+        if total_submissions > 0 and sum_of_weighted_averages > 0:
+            # Calculate the overall average grade across all submissions for this student in this run
+            overall_average_grade = round(sum_of_weighted_averages / total_submissions, 2)
+        else:
+            # Handle case where student directory exists but no gradeable files were found/graded
+            # Or if averages were 0. Using 0 is reasonable here.
+            overall_average_grade = 0
+
+        # Data row to append
+        log_data = {
+            'timestamp': timestamp,
+            'student_name': student_name,
+            'average_grade': overall_average_grade,
+            'ai_flags': ai_flags,
+            # You can add more fields here if needed by the dashboard in the future
+            # e.g., 'total_submissions': total_submissions
+        }
+
+        file_exists = os.path.isfile(output_csv_path)
+
+        try:
+            # Open the file in append mode
+            with open(output_csv_path, mode='a', newline='', encoding='utf-8') as csvfile:
+                fieldnames = ['timestamp', 'student_name', 'average_grade', 'ai_flags'] # Define column order
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                # Write header only if the file is new/doesn't exist yet
+                if not file_exists:
+                    writer.writeheader()
+
+                # Write the row for this student's grading event
+                writer.writerow(log_data)
+            logger.info(f"Appended summary data for {student_name} to {output_csv_path}")
+
+        except Exception as e:
+            # Log any errors that occur during file writing
+            logger.error(f"Failed to append data to {output_csv_path}: {e}")
+    # --- END NEW METHOD ---
+
     def generate_feedback_files(self):
-        """Generate individual feedback files for each student"""
+        """Generate individual feedback files for each student (or only the target student)"""
         feedback_dir = self.repo_path / "feedback"
         feedback_dir.mkdir(exist_ok=True)
-        
-        for student_name, student_data in self.results.items():
+
+        students_to_process = [self.target_student] if self.target_student else self.results.keys()
+
+        for student_name in students_to_process:
             if student_name == '_summary':
                 continue
-            
+
+            # Get student data, potentially from self.results if already graded, or re-grade if needed
+            student_data = self.results.get(student_name)
+            if not student_data:
+                # This case might occur if the script is run targeting a student not yet in results.
+                # Re-grade just this student.
+                logger.info(f"Re-grading {student_name} for feedback generation as they are not in current results.")
+                # Find student directory (assuming standard structure)
+                student_dirs = list(self.submissions_path.rglob(f"{student_name}/"))
+                if student_dirs:
+                    student_dir = student_dirs[0] # Take the first match
+                    # Determine assignment type from path (simplified)
+                    # This is a bit fragile, better to iterate through known types
+                    assignment_type = student_dir.parent.name # e.g., 'assignments', 'projects'
+                    if assignment_type in ['assignments', 'groupwork', 'projects']:
+                        student_results = self._grade_student_submissions(student_dir, student_name)
+                        # Structure it correctly for _write_student_feedback
+                        student_data = {assignment_type: student_results}
+                    else:
+                        logger.warning(f"Unknown assignment type directory for {student_name}: {assignment_type}")
+                        continue
+                else:
+                    logger.warning(f"Could not find directory for student {student_name} for feedback generation.")
+                    continue # Skip if directory not found
+
+            # Write feedback file for the student
             feedback_file = feedback_dir / f"{student_name}_feedback.md"
             self._write_student_feedback(feedback_file, student_name, student_data)
-    
+
     def _write_student_feedback(self, file_path: Path, student_name: str, student_data: Dict):
         """Write feedback file for a student"""
-        with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(f"# Feedback for {student_name}\n\n")
-            f.write(f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-            
-            for assignment_type in ['individual', 'group', 'project']:
-                if assignment_type in student_data:
-                    type_data = student_data[assignment_type]
+        try:
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(f"# Feedback for {student_name}\n\n")
+                f.write(f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+
+                # Iterate through the assignment types present in student_data
+                # (e.g., 'individual', 'group', 'project')
+                for assignment_type, type_data in student_data.items():
+                    if not isinstance(type_data, dict): # Skip '_summary' or other non-dict entries
+                         continue
                     f.write(f"## {assignment_type.title()} Assignments\n\n")
-                    f.write(f"**Average Grade:** {type_data.get('average_grade', 'N/A')}/100\n")
-                    f.write(f"**Total Submissions:** {type_data.get('total_submissions', 0)}\n")
-                    
+                    f.write(f"**Average Grade:** {type_data.get('average_grade', 'N/A')}/100\n\n")
+                    f.write(f"**Total Submissions:** {type_data.get('total_submissions', 0)}\n\n")
                     if type_data.get('ai_flagged', 0) > 0:
-                        f.write(f"**⚠️ AI Detection Flags:** {type_data['ai_flagged']} submissions\n")
-                    
-                    f.write("\n### Individual Submissions:\n\n")
-                    
+                        f.write(f"**⚠️ AI Detection Flags:** {type_data['ai_flagged']} submissions\n\n")
+
+                    f.write("### Individual Submissions:\n\n")
                     for submission in type_data.get('submissions', []):
-                        f.write(f"#### {submission['file_name']}\n")
-                        f.write(f"**Grade:** {submission['grade']}/100\n")
-                        f.write(f"**AI Detection:** {submission['ai_detection'].get('likelihood', 'N/A')}\n")
-                        
-                        if submission['ai_detection'].get('confidence', 0) > 50:
-                            f.write(f"**AI Confidence:** {submission['ai_detection'].get('confidence', 0)}%\n")
-                        
-                        f.write("\n**Feedback:**\n")
-                        for feedback_item in submission['feedback']:
-                            f.write(f"- {feedback_item}\n")
-                        
-                        f.write("\n")
-            
-            # Overall recommendations
-            f.write("## Overall Recommendations\n\n")
-            all_submissions = []
-            for assignment_type in ['individual', 'group', 'project']:
-                if assignment_type in student_data:
-                    all_submissions.extend(student_data[assignment_type].get('submissions', []))
-            
-            if all_submissions:
-                avg_grade = statistics.mean([s['grade'] for s in all_submissions if isinstance(s['grade'], (int, float))])
-                ai_flagged = sum(1 for s in all_submissions if s['ai_detection'].get('likelihood') in ['High', 'Very High'])
-                
-                if avg_grade >= 90:
-                    f.write("- Excellent work! Keep up the great coding practices.\n")
-                elif avg_grade >= 80:
-                    f.write("- Good work overall. Focus on the feedback points to improve further.\n")
-                elif avg_grade >= 70:
-                    f.write("- Satisfactory work. Please address the issues mentioned in feedback.\n")
-                else:
-                    f.write("- Needs improvement. Please review the feedback and seek help if needed.\n")
-                
-                if ai_flagged > 0:
-                    f.write("- ⚠️ **IMPORTANT:** Some submissions show signs of AI assistance. Please ensure all work is original.\n")
-                    f.write("- If you used AI tools for learning, please disclose this and submit your own implementation.\n")
+                        f.write(f"#### {submission['file_name']}\n\n")
+                        f.write(f"**Grade:** {submission['grade']}/100\n\n")
+                        f.write(f"**Feedback:** {submission['feedback']}\n\n")
+                        ai_info = submission.get('ai_detection', {})
+                        if ai_info.get('patterns_found'):
+                            f.write(f"**AI Detection:** {ai_info.get('explanation', 'Potential AI use detected.')}\n\n")
+                        f.write("---\n\n")
+            logger.info(f"Feedback written to {file_path}")
+
+        except Exception as e:
+            logger.error(f"Failed to write feedback file {file_path}: {e}")
+
 
 def main():
     """Main function to run the grader"""
-    import argparse
-    
     parser = argparse.ArgumentParser(description='Automated Assignment Grader')
     parser.add_argument('--repo-path', default='.', help='Path to the repository')
     parser.add_argument('--output', default='grading_results.json', help='Output file for results')
     parser.add_argument('--generate-feedback', action='store_true', help='Generate individual feedback files')
-    
+    parser.add_argument('--student', type=str, help='Grade only submissions for this specific student (directory name)')
+    # - Potentially add an argument to control dashboard logging -
+    # parser.add_argument('--no-dashboard-log', action='store_true', help='Skip appending to dashboard log')
     args = parser.parse_args()
-    
-    # Initialize grader
-    grader = AssignmentGrader(args.repo_path)
-    
-    # Grade all assignments
+
+    # Initialize grader with optional target student
+    grader = AssignmentGrader(args.repo_path, target_student=args.student)
+    # Grade assignments (all or specific student)
     results = grader.grade_all_assignments()
-    
     # Save results
-    with open(args.output, 'w', encoding='utf-8') as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
-    
-    # Generate feedback files if requested
+    output_file = Path(args.output)
+    try:
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+        logger.info(f"Results saved to: {output_file}")
+    except Exception as e:
+        logger.error(f"Failed to save results to {output_file}: {e}")
+        return # Exit if saving results fails
+
+    # --- NEW: Append to dashboard log if a specific student was graded ---
+    # if args.student and not args.no_dashboard_log: # Use flag if added
+    if args.student: # Only log if a specific student was targeted
+        grader._append_to_dashboard_log() # Call the new method
+    # --- END NEW ---
+
+    # Generate feedback files if requested (for all or specific student)
     if args.generate_feedback:
         grader.generate_feedback_files()
         logger.info("Feedback files generated in 'feedback' directory")
-    
+
     # Print summary
     summary = results.get('_summary', {})
     print(f"\n{'='*50}")
@@ -625,9 +638,13 @@ def main():
     print(f"\nGrade Distribution:")
     for grade_range, count in summary.get('grade_distribution', {}).items():
         print(f"  {grade_range}: {count} students")
-    
     print(f"\nResults saved to: {args.output}")
-    print("Run with --generate-feedback to create individual feedback files")
+    if args.generate_feedback:
+         print("Feedback files generated.")
+    if args.student:
+        print(f"Grading was restricted to student: {args.student}")
+        # - Optional: Print confirmation for dashboard log -
+        # print(f"Dashboard summary appended for: {args.student}")
 
 if __name__ == "__main__":
     main()

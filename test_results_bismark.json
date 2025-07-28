@@ -1,0 +1,612 @@
+{
+  "bismark": {
+    "individual": {
+      "total_submissions": 19,
+      "average_grade": 82.47,
+      "ai_flagged": 0,
+      "submissions": [
+        {
+          "file_name": "Bismark6.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark6.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 75,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.7376765391471274
+          },
+          "grade": 85.0,
+          "feedback": "Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark14.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark14.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 48,
+            "docstring_lines": 12,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.5965217391304348
+          },
+          "grade": 100,
+          "feedback": "Good work!",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark2.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark2.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 22,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 7 exceeds 100 characters",
+              "Line 13 exceeds 100 characters"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.45454545454545453
+          },
+          "grade": 81.0,
+          "feedback": "Style Issues (2): -4 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark8.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark8.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 35,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.44285714285714284
+          },
+          "grade": 85.0,
+          "feedback": "Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark9.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark9.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 18,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.836734693877551
+          },
+          "grade": 85.0,
+          "feedback": "Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark13.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark13.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 76,
+            "docstring_lines": 25,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.7295505430242273
+          },
+          "grade": 100,
+          "feedback": "Good work!",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "binary_bismark.py",
+          "file_path": "Submissions/assignments/bismark/binary_bismark.py",
+          "analysis": {
+            "file_type": "Python",
+            "lines_of_code": 92,
+            "docstring_lines": 6,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 15 uses tab for indentation",
+              "Line 16 uses tab for indentation",
+              "Line 17 uses tab for indentation",
+              "Line 20 uses tab for indentation",
+              "Line 21 uses tab for indentation",
+              "Line 22 uses tab for indentation",
+              "Line 23 uses tab for indentation",
+              "Line 24 uses tab for indentation",
+              "Line 44 exceeds 100 characters",
+              "Line 48 uses tab for indentation",
+              "Line 49 uses tab for indentation",
+              "Line 50 uses tab for indentation",
+              "Line 51 uses tab for indentation",
+              "Line 68 exceeds 100 characters",
+              "Line 81 uses tab for indentation",
+              "Line 82 uses tab for indentation",
+              "Line 83 uses tab for indentation",
+              "Line 85 uses tab for indentation",
+              "Line 86 exceeds 100 characters",
+              "Line 86 uses tab for indentation",
+              "Line 87 uses tab for indentation",
+              "Line 90 exceeds 100 characters"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "patterns": [],
+              "explanation": "No strong indicators of AI generation found.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.8260869565217391
+          },
+          "grade": 65.0,
+          "feedback": "Style Issues (22): -20 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "patterns": [],
+            "explanation": "No strong indicators of AI generation found.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark18.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark18.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 111,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 41 exceeds 100 characters"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.6259876708657196
+          },
+          "grade": 83.0,
+          "feedback": "Style Issues (1): -2 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "bismark_leetcode.ipynb",
+          "file_path": "Submissions/assignments/bismark/bismark_leetcode.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 16,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.5714285714285715
+          },
+          "grade": 85.0,
+          "feedback": "Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Binary_Snack_Converter.ipynb",
+          "file_path": "Submissions/assignments/bismark/Binary_Snack_Converter.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 89,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 3 exceeds 100 characters",
+              "Line 5 exceeds 100 characters",
+              "Line 8 uses tab for indentation",
+              "Line 9 uses tab for indentation",
+              "Line 10 uses tab for indentation",
+              "Line 11 uses tab for indentation",
+              "Line 12 uses tab for indentation"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.5529755761953904
+          },
+          "grade": 71.0,
+          "feedback": "Style Issues (7): -14 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark17.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark17.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 55,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.6308383609854198
+          },
+          "grade": 85.0,
+          "feedback": "Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "bismark_final.ipynb",
+          "file_path": "Submissions/assignments/bismark/bismark_final.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 22,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 4 uses tab for indentation",
+              "Line 5 uses tab for indentation"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.4090909090909091
+          },
+          "grade": 81.0,
+          "feedback": "Style Issues (2): -4 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark5.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark5.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 91,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 6 uses tab for indentation",
+              "Line 13 uses tab for indentation",
+              "Line 17 uses tab for indentation",
+              "Line 20 uses tab for indentation",
+              "Line 5 uses tab for indentation",
+              "Line 8 uses tab for indentation",
+              "Line 11 uses tab for indentation",
+              "Line 30 uses tab for indentation",
+              "Line 33 uses tab for indentation",
+              "Line 36 uses tab for indentation",
+              "Line 40 uses tab for indentation",
+              "Line 50 uses tab for indentation",
+              "Line 51 uses tab for indentation",
+              "Line 52 uses tab for indentation",
+              "Line 53 uses tab for indentation",
+              "Line 54 uses tab for indentation",
+              "Line 55 uses tab for indentation",
+              "Line 56 uses tab for indentation",
+              "Line 57 uses tab for indentation",
+              "Line 58 uses tab for indentation",
+              "Line 59 uses tab for indentation"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.570268361581921
+          },
+          "grade": 65.0,
+          "feedback": "Style Issues (21): -20 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark19&20.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark19&20.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 224,
+            "docstring_lines": 2,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 14 exceeds 100 characters"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.715083667402047
+          },
+          "grade": 83.0,
+          "feedback": "Style Issues (1): -2 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark4.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark4.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 10,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.6666666666666666
+          },
+          "grade": 100,
+          "feedback": "Good work!",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark1.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark1.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 18,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 1 exceeds 100 characters",
+              "Line 2 exceeds 100 characters",
+              "Line 5 exceeds 100 characters"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.3888888888888889
+          },
+          "grade": 79.0,
+          "feedback": "Style Issues (3): -6 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "bismark_wknd.ipynb",
+          "file_path": "Submissions/assignments/bismark/bismark_wknd.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 119,
+            "docstring_lines": 0,
+            "syntax_errors": [
+              "Syntax error at line 17: unexpected indent"
+            ],
+            "style_issues": [
+              "Line 2 exceeds 100 characters",
+              "Line 3 exceeds 100 characters",
+              "Line 2 exceeds 100 characters"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.6601986249045073
+          },
+          "grade": 69.0,
+          "feedback": "Syntax Errors (1): -10 points; Style Issues (3): -6 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "analyser_py.ipynb",
+          "file_path": "Submissions/assignments/bismark/analyser_py.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 210,
+            "docstring_lines": 0,
+            "syntax_errors": [],
+            "style_issues": [
+              "Line 2 exceeds 100 characters",
+              "Line 6 uses tab for indentation",
+              "Line 13 uses tab for indentation",
+              "Line 17 uses tab for indentation",
+              "Line 42 uses tab for indentation",
+              "Line 1 uses tab for indentation",
+              "Line 7 uses tab for indentation",
+              "Line 20 uses tab for indentation",
+              "Line 43 uses tab for indentation",
+              "Line 1 uses tab for indentation",
+              "Line 5 uses tab for indentation",
+              "Line 14 uses tab for indentation",
+              "Line 26 uses tab for indentation",
+              "Line 1 uses tab for indentation",
+              "Line 2 uses tab for indentation",
+              "Line 3 uses tab for indentation",
+              "Line 5 uses tab for indentation",
+              "Line 6 uses tab for indentation",
+              "Line 7 uses tab for indentation",
+              "Line 8 uses tab for indentation",
+              "Line 9 uses tab for indentation",
+              "Line 10 uses tab for indentation"
+            ],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.8435370249017038
+          },
+          "grade": 65.0,
+          "feedback": "Style Issues (22): -20 points; Low Documentation: -15.0 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        },
+        {
+          "file_name": "Bismark15&16.ipynb",
+          "file_path": "Submissions/assignments/bismark/Bismark15&16.ipynb",
+          "analysis": {
+            "file_type": "Jupyter Notebook",
+            "lines_of_code": 94,
+            "docstring_lines": 26,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "explanation": "Aggregated from individual code cells.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.8843528980507158
+          },
+          "grade": 100,
+          "feedback": "Good work!",
+          "ai_detection": {
+            "patterns_found": false,
+            "explanation": "Aggregated from individual code cells.",
+            "likelihood": "Very Low"
+          }
+        }
+      ]
+    },
+    "project": {
+      "total_submissions": 1,
+      "average_grade": 90.54,
+      "ai_flagged": 0,
+      "submissions": [
+        {
+          "file_name": "bismark_midterm.py",
+          "file_path": "Submissions/projects/bismark/bismark_midterm.py",
+          "analysis": {
+            "file_type": "Python",
+            "lines_of_code": 74,
+            "docstring_lines": 6,
+            "syntax_errors": [],
+            "style_issues": [],
+            "ai_detection": {
+              "patterns_found": false,
+              "patterns": [],
+              "explanation": "No strong indicators of AI generation found.",
+              "likelihood": "Very Low"
+            },
+            "complexity_score": 0.8783783783783784
+          },
+          "grade": 90.54,
+          "feedback": "Low Documentation: -9.5 points",
+          "ai_detection": {
+            "patterns_found": false,
+            "patterns": [],
+            "explanation": "No strong indicators of AI generation found.",
+            "likelihood": "Very Low"
+          }
+        }
+      ]
+    }
+  },
+  "_summary": {
+    "total_students": 1,
+    "total_submissions": 20,
+    "average_grade": 82.88,
+    "grade_distribution": {
+      "A (90-100)": 5,
+      "B (80-89)": 9,
+      "C (70-79)": 2,
+      "D (60-69)": 4,
+      "F (0-59)": 0
+    },
+    "ai_flagged_submissions": 0,
+    "ai_flagged_percentage": 0.0
+  }
+}

@@ -1,135 +1,124 @@
 # Feedback for john_onyancha
 
-Generated on: 2025-07-13 07:27:11
+Generated on: 2025-07-28 00:39:10
 
 ## Individual Assignments
 
-**Average Grade:** 94/100
+**Average Grade:** 84.5/100
+
 **Total Submissions:** 10
-**⚠️ AI Detection Flags:** 1 submissions
 
 ### Individual Submissions:
 
 #### assign4.ipynb
-**Grade:** 80/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- Code is too short - needs more implementation
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 98.0/100
+
+**Feedback:** Style Issues (1): -2 points
+
+---
 
 #### frequencyconter.py
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### temperature_converter.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### Unicommoncounter.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### matchrulecounter.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 1 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### guessinggames.p;y.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### personal_profile.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### binary-johnonyancha.ipynb
-**Grade:** 65/100
-**AI Detection:** High
 
-**Feedback:**
-- Minor style issues: 1 issues
-- ⚠️ Possible AI assistance detected - Ensure this is your original work
-- ✓ No syntax errors
+**Grade:** 81.0/100
+
+**Feedback:** Style Issues (2): -4 points; Low Documentation: -15.0 points
+
+---
 
 #### binary-snack-machine.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 1 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### johnNyangara_assign1&2.ipynb
-**Grade:** 95/100
-**AI Detection:** Low
 
-**Feedback:**
-- Minor style issues: 1 issues
-- ✓ No syntax errors
+**Grade:** 75.0/100
+
+**Feedback:** Style Issues (5): -10 points; Low Documentation: -15.0 points
+
+---
 
 ## Project Assignments
 
-**Average Grade:** 95/100
+**Average Grade:** 76.33/100
+
 **Total Submissions:** 3
 
 ### Individual Submissions:
 
 #### proj1.ipynb
-**Grade:** 95/100
-**AI Detection:** Low
 
-**Feedback:**
-- Minor style issues: 1 issues
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### john_onyancha_midtermexam.ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Good use of functions: 4 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 81.0/100
+
+**Feedback:** Style Issues (2): -4 points; Low Documentation: -15.0 points
+
+---
 
 #### analyzerproj.ipynb
-**Grade:** 90/100
-**AI Detection:** Medium
 
-**Feedback:**
-- Some patterns suggest possible AI assistance
-- ✓ Good use of functions: 4 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 65.0/100
 
-## Overall Recommendations
+**Feedback:** Style Issues (42): -20 points; Low Documentation: -15.0 points
 
-- Excellent work! Keep up the great coding practices.
-- ⚠️ **IMPORTANT:** Some submissions show signs of AI assistance. Please ensure all work is original.
-- If you used AI tools for learning, please disclose this and submit your own implementation.
+---
+
