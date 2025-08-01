@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Roney",
+        "age": 30,
+        "class_name": "cybersec",
+        "subjects": [
+            "tcp",
+            "http",
+            "tcl",
+            "ftp"
+        ],
+        "grades": [
+            45.0,
+            67.0,
+            88.0,
+            46.0
+        ]
+    },
+
+
+    {
+        "name": "Roney",
+        "age": 30,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [45.0, 67.0, 88.0, 46.0]
+    },
+    {
+        "name": "Alice",
+        "age": 28,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [78.0, 85.0, 92.0, 70.0]
+    },
+    {
+        "name": "Bob",
+        "age": 32,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [65.0, 72.0, 80.0, 55.0]
+    },
+    {
+        "name": "Clara",
+        "age": 27,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [90.0, 88.0, 95.0, 82.0]
+    },
+    {
+        "name": "David",
+        "age": 29,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [70.0, 75.0, 85.0, 60.0]
+    },
+    {
+        "name": "Emma",
+        "age": 31,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [82.0, 78.0, 90.0, 68.0]
+    },
+    {
+        "name": "Frank",
+        "age": 26,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [55.0, 60.0, 70.0, 50.0]
+    },
+    {
+        "name": "Grace",
+        "age": 33,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [88.0, 92.0, 96.0, 85.0]
+    },
+    {
+        "name": "Henry",
+        "age": 30,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [72.0, 80.0, 88.0, 65.0]
+    },
+    {
+        "name": "Isabel",
+        "age": 28,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [68.0, 70.0, 75.0, 62.0]
+    },
+    {
+        "name": "Jack",
+        "age": 29,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [80.0, 85.0, 90.0, 78.0]
+    },
+    {
+        "name": "Kelly",
+        "age": 31,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [60.0, 65.0, 70.0, 58.0]
+    },
+    {
+        "name": "Liam",
+        "age": 27,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [85.0, 88.0, 92.0, 80.0]
+    },
+    {
+        "name": "Mia",
+        "age": 32,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [75.0, 78.0, 82.0, 70.0]
+    },
+    {
+        "name": "Noah",
+        "age": 30,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [65.0, 70.0, 75.0, 60.0]
+    },
+    {
+        "name": "Olivia",
+        "age": 28,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [90.0, 92.0, 95.0, 88.0]
+    },
+    {
+        "name": "Peter",
+        "age": 29,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [70.0, 75.0, 80.0, 65.0]
+    },
+    {
+        "name": "Quinn",
+        "age": 31,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [82.0, 85.0, 90.0, 78.0]
+    },
+    {
+        "name": "Rachel",
+        "age": 27,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [68.0, 70.0, 75.0, 60.0]
+    },
+    {
+        "name": "Sam",
+        "age": 33,
+        "class_name": "cybersec",
+        "subjects": ["tcp", "http", "tcl", "ftp"],
+        "grades": [88.0, 90.0, 95.0, 85.0]
+    }
+]
+
