@@ -1,31 +1,28 @@
 # Feedback for Vincent
 
-Generated on: 2025-06-19 04:21:00
+Generated on: 2025-07-28 00:39:10
 
 ## Individual Assignments
 
-**Average Grade:** 85/100
+**Average Grade:** 80.0/100
+
 **Total Submissions:** 2
 
 ### Individual Submissions:
 
 #### weekend assign.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 4 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### vincent (1).ipynb
-**Grade:** 70/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- Syntax errors found: Syntax error at line 61: unexpected indent
-- ✓ Clean code style
+**Grade:** 75.0/100
 
-## Overall Recommendations
+**Feedback:** Syntax Errors (1): -10 points; Low Documentation: -15.0 points
 
-- Good work overall. Focus on the feedback points to improve further.
+---
+

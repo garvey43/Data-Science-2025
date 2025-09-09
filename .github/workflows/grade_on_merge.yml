@@ -1,0 +1,205 @@
+name: Grade on Merged PR
+
+on:
+  pull_request:
+    types: [closed] # Trigger when a PR is closed
+    paths:
+      - 'Submissions/**' # Only if changes are in Submissions
+
+jobs:
+  grade-if-merged:
+    # Only run if the PR was merged
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    # Permissions needed for committing back to the repo
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Important for git history/operations if needed later
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' # Match your existing setup
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Ensure nbformat is listed in your requirements.txt
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt
+          else
+            echo "requirements.txt not found, installing nbformat directly"
+            pip install nbformat
+          fi
+
+      - name: Identify Student (Robust)
+        id: identify_student
+        run: |
+          echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          echo "Fetching changed files for PR #${{ github.event.pull_request.number }}"
+
+          # Fetch list of changed files using GitHub CLI
+          gh pr view ${{ github.event.pull_request.number }} --json files --jq '.files[].path' > changed_files.txt
+
+          # Debug: Show changed files
+          echo "Changed files:"
+          cat changed_files.txt
+
+          # Extract potential student names (assuming path structure Submissions/<type>/<student_name>/...)
+          # This handles deeper nesting like Submissions/assignments/StudentName/ProjectFolder/file.py
+          awk -F'/' '/^Submissions\/[^\/]+\/[^\/]+\// { print $3 }' changed_files.txt | sort | uniq > potential_students.txt
+
+          # Debug: Show potential students
+          echo "Potential students identified:"
+          cat potential_students.txt
+
+          # Check the number of unique students
+          STUDENT_COUNT=$(wc -l < potential_students.txt)
+
+          if [ "$STUDENT_COUNT" -eq 0 ]; then
+            echo "Error: No student directory found in changed paths."
+            exit 1
+          elif [ "$STUDENT_COUNT" -gt 1 ]; then
+            echo "Error: Multiple student directories found in this PR. Please submit changes for one student at a time."
+            cat potential_students.txt
+            exit 1
+          else
+            STUDENT_NAME=$(cat potential_students.txt)
+            echo "STUDENT_NAME=$STUDENT_NAME" >> $GITHUB_ENV
+            echo "Student identified: $STUDENT_NAME"
+            # Output for use in subsequent steps via `id:`
+            echo "student_name=$STUDENT_NAME" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required for `gh` CLI
+
+      - name: Run assignment grader (for specific student)
+        run: |
+          echo "Grading assignments for student: ${{ env.STUDENT_NAME }}"
+          python grade_assignments.py --student "${{ env.STUDENT_NAME }}" --generate-feedback --output "grading_results_${{ env.STUDENT_NAME }}.json"
+          echo "Grading completed for ${{ env.STUDENT_NAME }}. Results saved to grading_results_${{ env.STUDENT_NAME }}.json"
+
+      - name: Retrieve Student Email
+        id: get_email
+        run: |
+          if [ ! -f "student_emails.json" ]; then
+            echo "Error: student_emails.json file not found in the repository."
+            echo "student_email=" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          STUDENT_NAME="${{ env.STUDENT_NAME }}"
+          # Use jq to parse JSON and find the email. Handle case where student is not found.
+          STUDENT_EMAIL=$(jq -r --arg name "$STUDENT_NAME" '.[$name] // empty' student_emails.json)
+
+          if [ -z "$STUDENT_EMAIL" ] || [ "$STUDENT_EMAIL" = "null" ]; then
+            echo "Warning: Email not found for student '$STUDENT_NAME' in student_emails.json. Email will not be sent."
+            echo "student_email=" >> $GITHUB_OUTPUT
+          else
+            echo "student_email=$STUDENT_EMAIL" >> $GITHUB_OUTPUT
+            echo "Email found for $STUDENT_NAME: $STUDENT_EMAIL"
+          fi
+
+      - name: Commit and Push Feedback and Student-Specific Results
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          # Add the specific student's feedback file and their results file
+          git add "feedback/${{ env.STUDENT_NAME }}_feedback.md"
+          git add "grading_results_${{ env.STUDENT_NAME }}.json"
+          # Commit if there are changes
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-grade: Feedback & Results for ${{ env.STUDENT_NAME }} (PR #${{ github.event.pull_request.number }})"
+            git push
+            echo "Feedback and results committed and pushed for ${{ env.STUDENT_NAME }}."
+          else
+            echo "No changes to feedback or results file for ${{ env.STUDENT_NAME }} to commit."
+          fi
+
+      # --- Data Aggregation for Dashboard ---
+      # Merge individual results into a central file for the Streamlit dashboard
+      - name: Aggregate Grading Results (for Dashboard)
+        run: |
+          AGGREGATED_FILE="dashboard_grading_history.jsonl" # Use JSONL for easy appending
+          STUDENT_RESULT_FILE="grading_results_${{ env.STUDENT_NAME }}.json"
+          echo "Aggregating results from $STUDENT_RESULT_FILE into $AGGREGATED_FILE"
+
+          # Create the file if it doesn't exist
+          touch "$AGGREGATED_FILE"
+
+          # Read the student's result file
+          if [ -f "$STUDENT_RESULT_FILE" ]; then
+            TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            STUDENT_NAME="${{ env.STUDENT_NAME }}"
+
+            # Extract overall average grade for the student from their results
+            # This gets the average across all their submission types (individual, group, project)
+            # Adjust the jq filter if you want a different aggregation (e.g., per type)
+            OVERALL_AVG=$(jq -r 'if ._summary then ._summary.average_grade else "N/A" end' "$STUDENT_RESULT_FILE")
+            AI_FLAGS=$(jq -r 'if ._summary then ._summary.ai_flagged_submissions else 0 end' "$STUDENT_RESULT_FILE")
+
+            # Create a simplified JSON record for the dashboard
+            DASHBOARD_RECORD=$(jq -n \
+              --arg ts "$TIMESTAMP" \
+              --arg student "$STUDENT_NAME" \
+              --arg avg "$OVERALL_AVG" \
+              --arg flags "$AI_FLAGS" \
+              '{timestamp: $ts, student_name: $student, average_grade: ($avg | tonumber? // null), ai_flags: ($flags | tonumber)}')
+
+            # Append the record as a new line to the JSONL file
+            echo "$DASHBOARD_RECORD" >> "$AGGREGATED_FILE"
+            echo "Appended record for $STUDENT_NAME to $AGGREGATED_FILE"
+
+            # Commit the updated aggregated file
+            git add "$AGGREGATED_FILE"
+            git commit -m "Update dashboard data for ${{ env.STUDENT_NAME }} (PR #${{ github.event.pull_request.number }})" || echo "No changes to dashboard data file to commit."
+            git push || echo "Failed to push dashboard data update (might be due to no changes or conflict)."
+          else
+             echo "Warning: Student result file $STUDENT_RESULT_FILE not found for aggregation."
+          fi
+
+      # --- Email Delivery ---
+      - name: Send Email Feedback (via SendGrid)
+        # Only run if an email address was found
+        if: steps.get_email.outputs.student_email != ''
+        uses: sendgrid/sendgrid-action@v2
+        with:
+          # The API key is stored in GitHub Secrets
+          api_key: ${{ secrets.SENDGRID_API_KEY }}
+          # Recipient email from the previous step
+          to: ${{ steps.get_email.outputs.student_email }}
+          # Sender email (you need to verify this in your SendGrid account)
+          from: instructor@yourcourse.com # *** REPLACE WITH YOUR VERIFIED SENDER EMAIL ***
+          subject: "Assignment Feedback for ${{ env.STUDENT_NAME }}"
+          # Read the content of the generated Markdown feedback file
+          # Note: SendGrid action might not directly support file://, so we pass content.
+          # Read file content into an environment variable first
+          body: |
+            Please find your assignment feedback attached or below.
+
+            ---
+            $(cat feedback/${{ env.STUDENT_NAME }}_feedback.md)
+            ---
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }} # Sometimes required by the action explicitly
+
+      - name: Log Missing Email
+        # Run this step if the email was NOT found
+        if: steps.get_email.outputs.student_email == ''
+        run: |
+          echo "Skipping email send for ${{ env.STUDENT_NAME }} as no email address was found in student_emails.json."
+
+      # Optional: Upload artifacts for potential later inspection
+      - name: Upload grading artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: grading-artifacts-pr-${{ github.event.pull_request.number }}-run-${{ github.run_id }}
+          path: |
+            grading_results_${{ env.STUDENT_NAME }}.json
+            feedback/${{ env.STUDENT_NAME }}_feedback.md
+          retention-days: 15 # Adjust as needed

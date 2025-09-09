@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Test</title>
+</head>
+<body>
+    <h1>Dashboard Test Page</h1>
+    <div id="test-output">Loading...</div>
+
+    <script>
+        // Simple test to check if data files are accessible
+        async function testDataLoading() {
+            const output = document.getElementById('test-output');
+
+            try {
+                // Test JSON loading
+                const jsonResponse = await fetch('./completion_analysis.json');
+                const jsonData = await jsonResponse.json();
+
+                // Test CSV loading
+                const csvResponse = await fetch('./completion_analysis.csv');
+                const csvText = await csvResponse.text();
+
+                // Count students
+                const studentCount = Object.keys(jsonData).length;
+
+                output.innerHTML = `
+                    <h2>✅ Dashboard Test Results</h2>
+                    <p><strong>JSON Data:</strong> ✅ Loaded (${studentCount} students)</p>
+                    <p><strong>CSV Data:</strong> ✅ Loaded (${csvText.split('\n').length - 1} rows)</p>
+                    <p><strong>Status:</strong> ✅ All data files accessible</p>
+                    <p><strong>Next:</strong> Main dashboard should work now!</p>
+                    <a href="index.html">Go to Main Dashboard</a>
+                `;
+
+            } catch (error) {
+                output.innerHTML = `
+                    <h2>❌ Dashboard Test Failed</h2>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p><strong>Status:</strong> Data files not accessible</p>
+                    <p><strong>Solution:</strong> Check if completion_analysis.json and completion_analysis.csv exist</p>
+                `;
+            }
+        }
+
+        // Run test when page loads
+        document.addEventListener('DOMContentLoaded', testDataLoading);
+    </script>
+</body>
+</html>

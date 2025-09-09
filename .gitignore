@@ -24,4 +24,30 @@ pip-delete-this-directory.txt
 # OS files
 .DS_Store
 Thumbs.db
+# Data Science files
+*.csv
+*.json
+*.pkl
+*.h5
+*.hdf5
+*.model
+*.weights
+*.ckpt
+data/
+models/
+notebooks/.ipynb_checkpoints/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Large data files
+*.zip
+*.tar.gz
+*.rar
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
 desktop.ini
+.vercel

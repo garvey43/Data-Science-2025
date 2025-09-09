@@ -1,70 +1,116 @@
 # Feedback for Lamech
 
-Generated on: 2025-06-19 04:21:00
+Generated on: 2025-07-28 00:39:10
 
 ## Individual Assignments
 
-**Average Grade:** 100/100
-**Total Submissions:** 5
+**Average Grade:** 95.18/100
+
+**Total Submissions:** 11
 
 ### Individual Submissions:
 
-#### Digit Frequency Counter.py
-**Grade:** 100/100
-**AI Detection:** Very Low
+#### final_exercise_lecture_11.py
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### Digit Frequency Counter.py
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### assignment_12(2).py
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### untitled0 (1).py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### binary_lamech__py.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### assignment_8_lamech.py
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### assignment_6.py
+
+**Grade:** 79.0/100
+
+**Feedback:** Style Issues (3): -6 points; Low Documentation: -15.0 points
+
+---
 
 #### Untitled2.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### assigmjent_7.py
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### assignment_14.py
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### lamech.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 4 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 ## Project Assignments
 
-**Average Grade:** 100/100
+**Average Grade:** 86.14/100
+
 **Total Submissions:** 1
 
 ### Individual Submissions:
 
 #### lamech_midtermexam.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 86.14/100
 
-## Overall Recommendations
+**Feedback:** Low Documentation: -13.9 points
 
-- Excellent work! Keep up the great coding practices.
+---
+

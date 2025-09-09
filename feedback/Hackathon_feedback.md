@@ -1,41 +1,36 @@
 # Feedback for Hackathon
 
-Generated on: 2025-06-19 04:21:00
+Generated on: 2025-07-28 00:39:10
 
 ## Group Assignments
 
-**Average Grade:** 96.67/100
+**Average Grade:** 71.0/100
+
 **Total Submissions:** 3
 
 ### Individual Submissions:
 
 #### Nahor3.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 1 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### hackathon1.ipynb
-**Grade:** 95/100
-**AI Detection:** Low
 
-**Feedback:**
-- Minor style issues: 1 issues
-- ✓ Good use of functions: 2 functions defined
-- ✓ No syntax errors
+**Grade:** 65.0/100
+
+**Feedback:** Style Issues (17): -20 points; Low Documentation: -15.0 points
+
+---
 
 #### Group4_HKT1.ipynb
-**Grade:** 95/100
-**AI Detection:** Low
 
-**Feedback:**
-- Minor style issues: 2 issues
-- ✓ Good use of functions: 2 functions defined
-- ✓ No syntax errors
+**Grade:** 65.0/100
 
-## Overall Recommendations
+**Feedback:** Style Issues (15): -20 points; Low Documentation: -15.0 points
 
-- Excellent work! Keep up the great coding practices.
+---
+

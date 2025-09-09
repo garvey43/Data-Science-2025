@@ -1,110 +1,180 @@
 # Feedback for bismark
 
-Generated on: 2025-06-19 04:21:00
+Generated on: 2025-07-28 00:39:10
 
 ## Individual Assignments
 
-**Average Grade:** 83.89/100
-**Total Submissions:** 9
-**⚠️ AI Detection Flags:** 2 submissions
+**Average Grade:** 82.47/100
+
+**Total Submissions:** 19
 
 ### Individual Submissions:
 
-#### Bismark2.ipynb
-**Grade:** 75/100
-**AI Detection:** Low
+#### Bismark6.ipynb
 
-**Feedback:**
-- Code is too short - needs more implementation
-- Minor style issues: 1 issues
-- ✓ No syntax errors
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### Bismark14.ipynb
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
+
+#### Bismark2.ipynb
+
+**Grade:** 81.0/100
+
+**Feedback:** Style Issues (2): -4 points; Low Documentation: -15.0 points
+
+---
+
+#### Bismark8.ipynb
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### Bismark9.ipynb
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
+
+#### Bismark13.ipynb
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### binary_bismark.py
-**Grade:** 65/100
-**AI Detection:** High
 
-**Feedback:**
-- Minor style issues: 2 issues
-- ⚠️ Possible AI assistance detected - Ensure this is your original work
-- ✓ No syntax errors
+**Grade:** 65.0/100
+
+**Feedback:** Style Issues (22): -20 points; Low Documentation: -15.0 points
+
+---
+
+#### Bismark18.ipynb
+
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
+
+#### bismark_leetcode.ipynb
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### Binary_Snack_Converter.ipynb
-**Grade:** 95/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- Minor style issues: 2 issues
-- ✓ No syntax errors
+**Grade:** 71.0/100
+
+**Feedback:** Style Issues (7): -14 points; Low Documentation: -15.0 points
+
+---
+
+#### Bismark17.ipynb
+
+**Grade:** 85.0/100
+
+**Feedback:** Low Documentation: -15.0 points
+
+---
 
 #### bismark_final.ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 81.0/100
+
+**Feedback:** Style Issues (2): -4 points; Low Documentation: -15.0 points
+
+---
 
 #### Bismark5.ipynb
-**Grade:** 70/100
-**AI Detection:** High
 
-**Feedback:**
-- ⚠️ Possible AI assistance detected - Ensure this is your original work
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 65.0/100
+
+**Feedback:** Style Issues (21): -20 points; Low Documentation: -15.0 points
+
+---
+
+#### Bismark19&20.ipynb
+
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### Bismark4.ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 #### Bismark1.ipynb
-**Grade:** 100/100
-**AI Detection:** Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 79.0/100
+
+**Feedback:** Style Issues (3): -6 points; Low Documentation: -15.0 points
+
+---
 
 #### bismark_wknd.ipynb
-**Grade:** 65/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- Syntax errors found: Syntax error at line 115: unexpected indent
-- Minor style issues: 2 issues
+**Grade:** 69.0/100
+
+**Feedback:** Syntax Errors (1): -10 points; Style Issues (3): -6 points; Low Documentation: -15.0 points
+
+---
 
 #### analyser_py.ipynb
-**Grade:** 85/100
-**AI Detection:** Medium
 
-**Feedback:**
-- Minor style issues: 1 issues
-- Some patterns suggest possible AI assistance
-- ✓ Good use of functions: 6 functions defined
-- ✓ No syntax errors
+**Grade:** 65.0/100
+
+**Feedback:** Style Issues (22): -20 points; Low Documentation: -15.0 points
+
+---
+
+#### Bismark15&16.ipynb
+
+**Grade:** 100/100
+
+**Feedback:** Good work!
+
+---
 
 ## Project Assignments
 
-**Average Grade:** 100/100
+**Average Grade:** 90.54/100
+
 **Total Submissions:** 1
 
 ### Individual Submissions:
 
 #### bismark_midterm.py
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Good use of functions: 3 functions defined
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 90.54/100
 
-## Overall Recommendations
+**Feedback:** Low Documentation: -9.5 points
 
-- Good work overall. Focus on the feedback points to improve further.
-- ⚠️ **IMPORTANT:** Some submissions show signs of AI assistance. Please ensure all work is original.
-- If you used AI tools for learning, please disclose this and submit your own implementation.
+---
+

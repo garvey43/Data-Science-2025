@@ -1,30 +1,28 @@
 # Feedback for Group1
 
-Generated on: 2025-06-19 04:21:00
+Generated on: 2025-07-28 00:39:10
 
 ## Group Assignments
 
-**Average Grade:** 97.5/100
+**Average Grade:** 84.0/100
+
 **Total Submissions:** 2
 
 ### Individual Submissions:
 
 #### GrpProj1.ipynb
-**Grade:** 95/100
-**AI Detection:** Low
 
-**Feedback:**
-- Minor style issues: 1 issues
-- ✓ No syntax errors
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
+
+---
 
 #### GrpAssign1.ipynb
-**Grade:** 100/100
-**AI Detection:** Very Low
 
-**Feedback:**
-- ✓ Clean code style
-- ✓ No syntax errors
+**Grade:** 85.0/100
 
-## Overall Recommendations
+**Feedback:** Low Documentation: -15.0 points
 
-- Excellent work! Keep up the great coding practices.
+---
+
