@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science 2025 - Student Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .stat-card h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        .stat-card p {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .students-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        .students-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .student-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .student-card h4 {
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            transition: width 1s ease;
+        }
+        .progress-fill.high { background: linear-gradient(90deg, #10b981, #34d399); }
+        .progress-fill.medium { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+        .progress-fill.low { background: linear-gradient(90deg, #ef4444, #f87171); }
+        .links-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .links-section h2 {
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .link-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .link-card i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .link-card h3 {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+        .link-card p {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.2);
+            margin-top: 50px;
+        }
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .students-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-chart-line"></i> Data Science 2025</h1>
+        <p>Student Performance Analytics Dashboard</p>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>14</h3>
+                <p class="label">Total Students</p>
+            </div>
+            <div class="stat-card">
+                <h3>42.5%</h3>
+                <p class="label">Average Completion</p>
+            </div>
+            <div class="stat-card">
+                <h3>77.3%</h3>
+                <p class="label">Top Score</p>
+            </div>
+            <div class="stat-card">
+                <h3>22</h3>
+                <p class="label">Assignments</p>
+            </div>
+        </div>
+
+        <div class="students-section">
+            <h2><i class="fas fa-users"></i> Student Progress</h2>
+            <div class="students-grid">
+                <div class="student-card">
+                    <h4>wilberforce</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill high" style="width: 77.3%"></div>
+                    </div>
+                    <p>17/22 assignments (77.3%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Teddy</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill medium" style="width: 63.6%"></div>
+                    </div>
+                    <p>14/22 assignments (63.6%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>bismark</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill medium" style="width: 63.6%"></div>
+                    </div>
+                    <p>14/22 assignments (63.6%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Denzel</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill medium" style="width: 59.1%"></div>
+                    </div>
+                    <p>13/22 assignments (59.1%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Kigen</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill medium" style="width: 54.5%"></div>
+                    </div>
+                    <p>12/22 assignments (54.5%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Vincent</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill medium" style="width: 50.0%"></div>
+                    </div>
+                    <p>11/22 assignments (50.0%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Nehemiah</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill low" style="width: 45.5%"></div>
+                    </div>
+                    <p>10/22 assignments (45.5%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Garvey</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill low" style="width: 40.9%"></div>
+                    </div>
+                    <p>9/22 assignments (40.9%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Elsa</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill low" style="width: 36.4%"></div>
+                    </div>
+                    <p>8/22 assignments (36.4%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Felix</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill low" style="width: 36.4%"></div>
+                    </div>
+                    <p>8/22 assignments (36.4%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Lamech</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill low" style="width: 36.4%"></div>
+                    </div>
+                    <p>8/22 assignments (36.4%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>john_onyancha</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill low" style="width: 18.2%"></div>
+                    </div>
+                    <p>4/22 assignments (18.2%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Nahor</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill low" style="width: 13.6%"></div>
+                    </div>
+                    <p>3/22 assignments (13.6%)</p>
+                </div>
+                <div class="student-card">
+                    <h4>Frank</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill low" style="width: 0%"></div>
+                    </div>
+                    <p>0/22 assignments (0%)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="links-section">
+            <h2><i class="fas fa-link"></i> Access Options</h2>
+            <div class="links-grid">
+                <a href="index.html" class="link-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Full Dashboard</h3>
+                    <p>Interactive charts and analytics</p>
+                </a>
+                <a href="test.html" class="link-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Data Test</h3>
+                    <p>Verify data loading</p>
+                </a>
+                <a href="simple-test.html" class="link-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Simple Test</h3>
+                    <p>Basic Vercel functionality</p>
+                </a>
+                <a href="README.md" class="link-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Documentation</h3>
+                    <p>Project information</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><i class="fas fa-code"></i> Built with ❤️ for Data Science 2025 | Deployed on Vercel</p>
+        <p>Last updated: <span id="timestamp"></span></p>
+    </div>
+
+    <script>
+        // Add timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+
+        // Animate progress bars on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.progress-fill');
+                    if (progressBar) {
+                        const width = progressBar.style.width;
+                        progressBar.style.width = '0%';
+                        setTimeout(() => {
+                            progressBar.style.width = width;
+                        }, 200);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all student cards
+        document.querySelectorAll('.student-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

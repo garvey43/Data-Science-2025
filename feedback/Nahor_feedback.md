@@ -1,12 +1,12 @@
 # Feedback for Nahor
 
-Generated on: 2025-07-28 00:39:10
+Generated on: 2025-09-08 01:35:35
 
 ## Individual Assignments
 
-**Average Grade:** 82.87/100
+**Average Grade:** 82.88/100
 
-**Total Submissions:** 15
+**Total Submissions:** 16
 
 ### Individual Submissions:
 
@@ -127,6 +127,14 @@ Generated on: 2025-07-28 00:39:10
 **Grade:** 100/100
 
 **Feedback:** Good work!
+
+---
+
+#### FITNESS TRACKER.ipynb
+
+**Grade:** 83.0/100
+
+**Feedback:** Style Issues (1): -2 points; Low Documentation: -15.0 points
 
 ---
 
