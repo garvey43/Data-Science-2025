@@ -1,4 +1,4 @@
-# 📊 Data Science 2025 Python Assignments – Assignments by Ridge Junior
+# 📊 Data Science 2025 Python Assignments – Assignments by Ridge Junior Abuto
 
 This repository contains my weekly assignments for the **Data Science 2025** course.  
 Each assignment is saved as a Python script (`assignment_X.py`) with some challenges split into sub-files (e.g., `assignment_5_challenge_2.py`).
