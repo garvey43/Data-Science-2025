@@ -3,264 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science 2025 - Student Analytics Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Data Science 2025 Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .student-list { margin-top: 20px; }
+        .student { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }
+        .curriculum { margin-top: 40px; border-top: 2px solid #ccc; padding-top: 20px; }
+        canvas { max-width: 600px; margin: 20px 0; }
+    </style>
 </head>
 <body>
-    <div class="dashboard-container">
-        <!-- Header -->
-        <header class="dashboard-header">
-            <div class="header-content">
-                <div class="logo-section">
-                    <i class="fas fa-chart-line"></i>
-                    <div>
-                        <h1>Data Science 2025</h1>
-                        <p>Student Performance Analytics</p>
-                    </div>
-                </div>
-                <div class="header-actions">
-                    <button class="refresh-btn" onclick="refreshDashboard()">
-                        <i class="fas fa-sync-alt"></i> Refresh
-                    </button>
-                    <div class="last-update" id="lastUpdate">
-                        <i class="fas fa-clock"></i> Loading...
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Key Metrics Cards -->
-        <section class="metrics-section">
-            <div class="metrics-grid">
-                <div class="metric-card total-students">
-                    <div class="metric-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="metric-content">
-                        <h3 id="totalStudents">--</h3>
-                        <p>Total Students</p>
-                        <span class="metric-trend" id="studentsTrend">
-                            <i class="fas fa-arrow-up"></i> Active
-                        </span>
-                    </div>
-                </div>
-
-                <div class="metric-card completion-rate">
-                    <div class="metric-icon">
-                        <i class="fas fa-percentage"></i>
-                    </div>
-                    <div class="metric-content">
-                        <h3 id="avgCompletion">--%</h3>
-                        <p>Avg Completion</p>
-                        <span class="metric-trend positive" id="completionTrend">
-                            <i class="fas fa-arrow-up"></i> +2.1%
-                        </span>
-                    </div>
-                </div>
-
-                <div class="metric-card top-performer">
-                    <div class="metric-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="metric-content">
-                        <h3 id="highestScore">--%</h3>
-                        <p>Top Score</p>
-                        <span class="metric-trend" id="topPerformerName">Loading...</span>
-                    </div>
-                </div>
-
-                <div class="metric-card assignments-done">
-                    <div class="metric-icon">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <div class="metric-content">
-                        <h3 id="totalAssignments">--</h3>
-                        <p>Assignments Tracked</p>
-                        <span class="metric-trend" id="assignmentTrend">
-                            <i class="fas fa-calendar"></i> Updated
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Charts Section -->
-        <section class="charts-section">
-            <div class="charts-grid">
-                <!-- Completion Overview -->
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-pie"></i> Completion Distribution</h3>
-                        <div class="chart-controls">
-                            <button class="chart-toggle active" data-chart="doughnut">Doughnut</button>
-                            <button class="chart-toggle" data-chart="bar">Bar</button>
-                        </div>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="completionChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Assignment Progress -->
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-bar"></i> Assignment Completion by Number</h3>
-                        <div class="chart-controls">
-                            <button class="chart-toggle active" data-chart="bar">Bar</button>
-                            <button class="chart-toggle" data-chart="line">Line</button>
-                        </div>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="assignmentChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Student Performance Trend -->
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-line"></i> Student Performance Overview</h3>
-                        <div class="chart-controls">
-                            <button class="chart-toggle active" data-chart="radar">Radar</button>
-                            <button class="chart-toggle" data-chart="horizontalBar">Horizontal</button>
-                        </div>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="performanceChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Weekly Progress -->
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-calendar-week"></i> Weekly Progress Trend</h3>
-                        <div class="chart-controls">
-                            <button class="chart-toggle active" data-chart="line">Trend</button>
-                            <button class="chart-toggle" data-chart="area">Area</button>
-                        </div>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="weeklyChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Students Table -->
-        <section class="students-section">
-            <div class="section-header">
-                <h3><i class="fas fa-users"></i> Student Performance Details</h3>
-                <div class="table-controls">
-                    <input type="text" id="studentSearch" placeholder="Search students..." class="search-input">
-                    <select id="sortBy" class="sort-select">
-                        <option value="completion_rate">Sort by Completion</option>
-                        <option value="name">Sort by Name</option>
-                        <option value="completed">Sort by Completed</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="table-container">
-                <table id="studentsTable">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Student</th>
-                            <th>Completed</th>
-                            <th>Remaining</th>
-                            <th>Completion Rate</th>
-                            <th>Progress</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="studentsTableBody">
-                        <tr>
-                            <td colspan="7" class="loading">
-                                <i class="fas fa-spinner fa-spin"></i> Loading student data...
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Insights Section -->
-        <section class="insights-section">
-            <div class="insights-grid">
-                <div class="insight-card focus-areas">
-                    <div class="insight-header">
-                        <i class="fas fa-bullseye"></i>
-                        <h4>Focus Areas</h4>
-                    </div>
-                    <div class="insight-content">
-                        <div id="focusStudents" class="insight-list">
-                            <div class="loading">Analyzing...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="insight-card success-patterns">
-                    <div class="insight-header">
-                        <i class="fas fa-lightbulb"></i>
-                        <h4>Success Patterns</h4>
-                    </div>
-                    <div class="insight-content">
-                        <div id="successPatterns" class="insight-text">
-                            <div class="loading">Analyzing...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="insight-card challenges">
-                    <div class="insight-header">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h4>Challenges</h4>
-                    </div>
-                    <div class="insight-content">
-                        <div id="challenges" class="insight-text">
-                            <div class="loading">Analyzing...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="insight-card recommendations">
-                    <div class="insight-header">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h4>Recommendations</h4>
-                    </div>
-                    <div class="insight-content">
-                        <div id="recommendations" class="insight-list">
-                            <div class="loading">Generating...</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="dashboard-footer">
-            <div class="footer-content">
-                <p>&copy; 2025 Data Science 2025 - Student Analytics Dashboard</p>
-                <div class="footer-links">
-                    <a href="#" onclick="exportData()"><i class="fas fa-download"></i> Export Data</a>
-                    <a href="#" onclick="showAbout()"><i class="fas fa-info-circle"></i> About</a>
-                </div>
-            </div>
-        </footer>
+    <h1>Data Science 2025 Student Progress Dashboard</h1>
+    <p>Average Completion Rate: <span id="average-rate"></span>%</p>
+    <canvas id="completionChart"></canvas>
+    <div class="student-list" id="studentList"></div>
+    
+    <div class="curriculum">
+        <h2>Curriculum Overview</h2>
+        <p>The Eldohub Certificate in Data Science (Level 4) curriculum is structured into 6 modules covering developer fundamentals to model deployment. Full details in <a href="../doc/curriculum.md">doc/curriculum.md</a>.</p>
+        <ul>
+            <li><strong>Module 0:</strong> Developer Fundamentals (Git, CLI, Docker)</li>
+            <li><strong>Module 1:</strong> Python Programming (55% weight)</li>
+            <li><strong>Module 2:</strong> SQL & Data Manipulation</li>
+            <li><strong>Module 3:</strong> Data Analysis & Visualization</li>
+            <li><strong>Module 4:</strong> Machine Learning Foundations</li>
+            <li><strong>Module 5:</strong> System Design & Deployment</li>
+            <li><strong>Capstone:</strong> End-to-end project deployment</li>
+        </ul>
+        <p>Progress is tracked against 22 weekly assignments aligned with modules.</p>
     </div>
 
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-content">
-            <i class="fas fa-chart-line fa-spin"></i>
-            <h3>Loading Dashboard...</h3>
-            <p>Analyzing student performance data</p>
-        </div>
-    </div>
+    <script>
+        fetch('../completion_analysis.json')
+            .then(response => response.json())
+            .then(data => {
+                const students = Object.values(data);
+                const averageRate = students.reduce((sum, s) => sum + s.completion_rate, 0) / students.length;
+                document.getElementById('average-rate').textContent = averageRate.toFixed(1);
 
-    <script src="script.js"></script>
+                // Simple bar chart for completion rates
+                const ctx = document.getElementById('completionChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: students.map(s => s.student),
+                        datasets: [{
+                            label: 'Completion Rate (%)',
+                            data: students.map(s => s.completion_rate),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: { scales: { y: { beginAtZero: true, max: 100 } } }
+                });
+
+                // Student list
+                const listDiv = document.getElementById('studentList');
+                students.sort((a, b) => b.completion_rate - a.completion_rate);
+                students.forEach(student => {
+                    const div = document.createElement('div');
+                    div.className = 'student';
+                    div.innerHTML = `
+                        <h3>${student.student} - ${student.completion_rate.toFixed(1)}% (${student.completed}/${22})</h3>
+                        <p>Assignments: ${student.assignment_numbers.join(', ')}</p>
+                        <p>Files: ${student.files.length > 0 ? student.files.slice(0, 5).join(', ') + '...' : 'None'}</p>
+                    `;
+                    listDiv.appendChild(div);
+                });
+            });
+    </script>
 </body>
 </html>

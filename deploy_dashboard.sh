@@ -21,8 +21,8 @@ if ! command -v vercel &> /dev/null; then
     exit 1
 fi
 
-echo "📋 Deploying to Vercel..."
-echo "   (Using existing project configuration)"
+echo "📋 Using project name: data-science-dashboard"
+echo "   (Vercel requires lowercase names)"
 echo ""
 
 # Deploy to production
