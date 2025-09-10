@@ -11,11 +11,13 @@
         .student { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }
         .curriculum { margin-top: 40px; border-top: 2px solid #ccc; padding-top: 20px; }
         canvas { max-width: 600px; margin: 20px 0; }
+        .grade { font-weight: bold; color: green; }
     </style>
 </head>
 <body>
     <h1>Data Science 2025 Student Progress Dashboard</h1>
     <p>Average Completion Rate: <span id="average-rate"></span>%</p>
+    <p>Overall Average Grade: <span id="average-grade"></span>%</p>
     <canvas id="completionChart"></canvas>
     <div class="student-list" id="studentList"></div>
     
@@ -35,43 +37,53 @@
     </div>
 
     <script>
+        // Load completion data
         fetch('../completion_analysis.json')
             .then(response => response.json())
-            .then(data => {
-                const students = Object.values(data);
-                const averageRate = students.reduce((sum, s) => sum + s.completion_rate, 0) / students.length;
-                document.getElementById('average-rate').textContent = averageRate.toFixed(1);
+            .then(completionData => {
+                // Load feedback data
+                fetch('../feedback_analysis.json')
+                    .then(response => response.json())
+                    .then(feedbackData => {
+                        const students = Object.values(completionData);
+                        const averageRate = students.reduce((sum, s) => sum + s.completion_rate, 0) / students.length;
+                        document.getElementById('average-rate').textContent = averageRate.toFixed(1);
 
-                // Simple bar chart for completion rates
-                const ctx = document.getElementById('completionChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: students.map(s => s.student),
-                        datasets: [{
-                            label: 'Completion Rate (%)',
-                            data: students.map(s => s.completion_rate),
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: { scales: { y: { beginAtZero: true, max: 100 } } }
-                });
+                        const averageGrade = students.reduce((sum, s) => sum + (s.average_grade || 0), 0) / students.length;
+                        document.getElementById('average-grade').textContent = averageGrade.toFixed(1);
 
-                // Student list
-                const listDiv = document.getElementById('studentList');
-                students.sort((a, b) => b.completion_rate - a.completion_rate);
-                students.forEach(student => {
-                    const div = document.createElement('div');
-                    div.className = 'student';
-                    div.innerHTML = `
-                        <h3>${student.student} - ${student.completion_rate.toFixed(1)}% (${student.completed}/${22})</h3>
-                        <p>Assignments: ${student.assignment_numbers.join(', ')}</p>
-                        <p>Files: ${student.files.length > 0 ? student.files.slice(0, 5).join(', ') + '...' : 'None'}</p>
-                    `;
-                    listDiv.appendChild(div);
-                });
+                        // Bar chart for completion rates
+                        const ctx = document.getElementById('completionChart').getContext('2d');
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: students.map(s => s.student),
+                                datasets: [{
+                                    label: 'Completion Rate (%)',
+                                    data: students.map(s => s.completion_rate),
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: { scales: { y: { beginAtZero: true, max: 100 } } }
+                        });
+
+                        // Student list with grades
+                        const listDiv = document.getElementById('studentList');
+                        students.sort((a, b) => (b.completion_rate || 0) - (a.completion_rate || 0));
+                        students.forEach(student => {
+                            const div = document.createElement('div');
+                            div.className = 'student';
+                            const grade = feedbackData[student.student] ? feedbackData[student.student].average_grade : 'N/A';
+                            div.innerHTML = `
+                                <h3>${student.student} - Completion: ${student.completion_rate.toFixed(1)}% (${student.completed}/${22}) | Grade: <span class="grade">${grade}</span>%</h3>
+                                <p>Assignments: ${student.assignment_numbers.join(', ')}</p>
+                                <p>Files: ${student.files.length > 0 ? student.files.slice(0, 5).join(', ') + '...' : 'None'}</p>
+                            `;
+                            listDiv.appendChild(div);
+                        });
+                    });
             });
     </script>
 </body>

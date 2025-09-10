@@ -123,10 +123,10 @@
   },
   "Garvey": {
     "student": "Garvey",
-    "completed": 9,
-    "remaining": 13,
-    "total_files": 25,
-    "completion_rate": 40.9,
+    "completed": 11,
+    "remaining": 11,
+    "total_files": 27,
+    "completion_rate": 50.0,
     "assignment_numbers": [
       1,
       2,
@@ -136,7 +136,9 @@
       8,
       10,
       17,
-      18
+      18,
+      21,
+      22
     ],
     "files": [
       "Assignment2_7_2025.ipynb",
@@ -157,21 +159,23 @@
       "R_non_numerics_assignment.ipynb",
       "17th_assignment_15_7_25 (1).ipynb",
       "23_6_2025.ipynb",
+      "Assignment22 (1).ipynb",
       "assign3.ipynb",
       "coding.ipynb",
       "Assign1 (1).ipynb",
       "weekend8_7_2025.ipynb",
       "17_6_2025.ipynb",
       "user_py.ipynb",
+      "Assignment21x.ipynb",
       "g2025.ipynb"
     ]
   },
   "Kigen": {
     "student": "Kigen",
-    "completed": 12,
-    "remaining": 10,
-    "total_files": 17,
-    "completion_rate": 54.5,
+    "completed": 14,
+    "remaining": 8,
+    "total_files": 19,
+    "completion_rate": 63.6,
     "assignment_numbers": [
       1,
       2,
@@ -184,10 +188,13 @@
       12,
       13,
       15,
-      17
+      17,
+      19,
+      21
     ],
     "files": [
       "assignment_13_&_14.py",
+      "assignment_19_&_20.py",
       "temprature_converter.py",
       "Kigen_Assigmnent_3.ipynb",
       "assignment_17.py",
@@ -198,6 +205,7 @@
       "Binary_Assingment.ipynb",
       "assignment_9.py",
       "Kigen_Assignmnt_2.ipynb",
+      "Assignment 21&22 (2).py",
       "Assignment 4.ipynb",
       "Kigen_Asignment_1.ipynb",
       "assignment_10.py",
@@ -208,22 +216,34 @@
   },
   "Lamech": {
     "student": "Lamech",
-    "completed": 8,
-    "remaining": 14,
-    "total_files": 11,
-    "completion_rate": 36.4,
+    "completed": 13,
+    "remaining": 9,
+    "total_files": 18,
+    "completion_rate": 59.1,
     "assignment_numbers": [
       1,
       2,
       6,
       7,
       8,
+      10,
       11,
       12,
-      14
+      13,
+      14,
+      15,
+      16,
+      20
     ],
     "files": [
+      "assignment_15_submission.py",
+      "assignment_12.py",
+      "assignment_13_submission.py",
       "untitled0 (1).py",
+      "assignment_20_lecture(17_20)_submission.py",
+      "assignment_14_submission.py",
+      "assignment_10 (1).py",
+      "assignment_lecture_16_submission.py",
       "week-12/assignment_12(2).py",
       "week-09/Digit Frequency Counter.py",
       "week-11/final_exercise_lecture_11.py",
