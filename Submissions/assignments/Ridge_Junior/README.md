@@ -53,5 +53,5 @@ Replace `X` with the assignment number (e.g., `python assignment_10.py`).
 
 ## 🧑‍💻 Author
 
-**Ridge Junior**
+**Ridge Junior Abuto**
 *Data Science 2025 Cohort*
