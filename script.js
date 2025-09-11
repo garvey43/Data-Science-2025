@@ -95,7 +95,7 @@ class ProfessionalDashboard {
     }
 
     getFallbackData() {
-        // Updated fallback data with 16 students (post-merge analysis, 2025-09-11)
+        // Updated fallback data with 15 students (removed JuniorCarti, 2025-09-11)
         return {
             "wilberforce": {"student": "wilberforce", "completed": 17, "remaining": 5, "completion_rate": 77.3, "total_files": 22, "status": "Incomplete", "assignment_numbers": [1,2,4,5,6,7,9,10,11,12,13,15,17,18,19,21,22]},
             "Ridge_Junior": {"student": "Ridge_Junior", "completed": 16, "remaining": 6, "completion_rate": 72.7, "total_files": 30, "status": "Incomplete", "assignment_numbers": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,22]},
@@ -111,8 +111,7 @@ class ProfessionalDashboard {
             "Felix": {"student": "Felix", "completed": 8, "remaining": 14, "completion_rate": 36.4, "total_files": 15, "status": "Incomplete", "assignment_numbers": [1,2,6,7,11,14,17,21]},
             "john_onyancha": {"student": "john_onyancha", "completed": 4, "remaining": 18, "completion_rate": 18.2, "total_files": 12, "status": "Incomplete", "assignment_numbers": [1,4,18,22]},
             "Nahor": {"student": "Nahor", "completed": 3, "remaining": 19, "completion_rate": 13.6, "total_files": 16, "status": "Incomplete", "assignment_numbers": [1,4,14]},
-            "Frank": {"student": "Frank", "completed": 0, "remaining": 22, "completion_rate": 0.0, "total_files": 0, "status": "Incomplete", "assignment_numbers": []},
-            "JuniorCarti": {"student": "JuniorCarti", "completed": 0, "remaining": 22, "completion_rate": 0.0, "total_files": 0, "status": "Incomplete", "assignment_numbers": []}
+            "Frank": {"student": "Frank", "completed": 0, "remaining": 22, "completion_rate": 0.0, "total_files": 0, "status": "Incomplete", "assignment_numbers": []}
         };
     }
 
