@@ -95,22 +95,24 @@ class ProfessionalDashboard {
     }
 
     getFallbackData() {
-        // Professional fallback data with all 14 students
+        // Updated fallback data with 16 students (post-merge analysis, 2025-09-11)
         return {
             "wilberforce": {"student": "wilberforce", "completed": 17, "remaining": 5, "completion_rate": 77.3, "total_files": 22, "status": "Incomplete", "assignment_numbers": [1,2,4,5,6,7,9,10,11,12,13,15,17,18,19,21,22]},
+            "Ridge_Junior": {"student": "Ridge_Junior", "completed": 16, "remaining": 6, "completion_rate": 72.7, "total_files": 30, "status": "Incomplete", "assignment_numbers": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,22]},
+            "Kigen": {"student": "Kigen", "completed": 14, "remaining": 8, "completion_rate": 63.6, "total_files": 19, "status": "Incomplete", "assignment_numbers": [1,2,3,4,7,9,10,11,12,13,15,17,19,21]},
             "Teddy": {"student": "Teddy", "completed": 14, "remaining": 8, "completion_rate": 63.6, "total_files": 20, "status": "Incomplete", "assignment_numbers": [1,2,4,8,10,11,12,13,14,15,16,17,18,21]},
             "bismark": {"student": "bismark", "completed": 14, "remaining": 8, "completion_rate": 63.6, "total_files": 24, "status": "Incomplete", "assignment_numbers": [1,2,4,5,6,8,9,13,14,15,17,18,19,22]},
             "Denzel": {"student": "Denzel", "completed": 13, "remaining": 9, "completion_rate": 59.1, "total_files": 16, "status": "Incomplete", "assignment_numbers": [1,2,6,7,8,10,11,12,13,15,16,17,18]},
-            "Kigen": {"student": "Kigen", "completed": 12, "remaining": 10, "completion_rate": 54.5, "total_files": 17, "status": "Incomplete", "assignment_numbers": [1,2,3,4,7,9,10,11,12,13,15,17]},
+            "Lamech": {"student": "Lamech", "completed": 13, "remaining": 9, "completion_rate": 59.1, "total_files": 18, "status": "Incomplete", "assignment_numbers": [1,2,6,7,8,10,11,12,13,14,15,16,20]},
+            "Nehemiah": {"student": "Nehemiah", "completed": 13, "remaining": 9, "completion_rate": 59.1, "total_files": 24, "status": "Incomplete", "assignment_numbers": [1,5,6,7,8,11,15,16,17,18,19,20,21]},
+            "Garvey": {"student": "Garvey", "completed": 11, "remaining": 11, "completion_rate": 50.0, "total_files": 27, "status": "Incomplete", "assignment_numbers": [1,2,3,4,6,8,10,17,18,21,22]},
             "Vincent": {"student": "Vincent", "completed": 11, "remaining": 11, "completion_rate": 50.0, "total_files": 17, "status": "Incomplete", "assignment_numbers": [1,5,7,8,10,11,12,13,14,15,16]},
-            "Nehemiah": {"student": "Nehemiah", "completed": 10, "remaining": 12, "completion_rate": 45.5, "total_files": 15, "status": "Incomplete", "assignment_numbers": [1,5,6,7,8,11,15,16,17,18]},
-            "Garvey": {"student": "Garvey", "completed": 9, "remaining": 13, "completion_rate": 40.9, "total_files": 25, "status": "Incomplete", "assignment_numbers": [1,2,3,4,6,8,10,17,18]},
-            "Elsa": {"student": "Elsa", "completed": 8, "remaining": 14, "completion_rate": 36.4, "total_files": 20, "status": "Incomplete", "assignment_numbers": [1,7,10,12,13,15,17,21]},
+            "Elsa": {"student": "Elsa", "completed": 10, "remaining": 12, "completion_rate": 45.5, "total_files": 41, "status": "Incomplete", "assignment_numbers": [1,7,10,12,13,15,17,18,21]},
             "Felix": {"student": "Felix", "completed": 8, "remaining": 14, "completion_rate": 36.4, "total_files": 15, "status": "Incomplete", "assignment_numbers": [1,2,6,7,11,14,17,21]},
-            "Lamech": {"student": "Lamech", "completed": 8, "remaining": 14, "completion_rate": 36.4, "total_files": 11, "status": "Incomplete", "assignment_numbers": [1,2,6,7,8,11,12,14]},
             "john_onyancha": {"student": "john_onyancha", "completed": 4, "remaining": 18, "completion_rate": 18.2, "total_files": 12, "status": "Incomplete", "assignment_numbers": [1,4,18,22]},
             "Nahor": {"student": "Nahor", "completed": 3, "remaining": 19, "completion_rate": 13.6, "total_files": 16, "status": "Incomplete", "assignment_numbers": [1,4,14]},
-            "Frank": {"student": "Frank", "completed": 0, "remaining": 22, "completion_rate": 0.0, "total_files": 0, "status": "Incomplete", "assignment_numbers": []}
+            "Frank": {"student": "Frank", "completed": 0, "remaining": 22, "completion_rate": 0.0, "total_files": 0, "status": "Incomplete", "assignment_numbers": []},
+            "JuniorCarti": {"student": "JuniorCarti", "completed": 0, "remaining": 22, "completion_rate": 0.0, "total_files": 0, "status": "Incomplete", "assignment_numbers": []}
         };
     }
 
