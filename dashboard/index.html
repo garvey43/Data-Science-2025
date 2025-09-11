@@ -3,88 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science 2025 Dashboard</title>
+    <title>Data Science 2025 - Professional Analytics Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .student-list { margin-top: 20px; }
-        .student { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }
-        .curriculum { margin-top: 40px; border-top: 2px solid #ccc; padding-top: 20px; }
-        canvas { max-width: 600px; margin: 20px 0; }
-        .grade { font-weight: bold; color: green; }
-    </style>
 </head>
 <body>
-    <h1>Data Science 2025 Student Progress Dashboard</h1>
-    <p>Average Completion Rate: <span id="average-rate"></span>%</p>
-    <p>Overall Average Grade: <span id="average-grade"></span>%</p>
-    <canvas id="completionChart"></canvas>
-    <div class="student-list" id="studentList"></div>
-    
-    <div class="curriculum">
-        <h2>Curriculum Overview</h2>
-        <p>The Eldohub Certificate in Data Science (Level 4) curriculum is structured into 6 modules covering developer fundamentals to model deployment. Full details in <a href="../doc/curriculum.md">doc/curriculum.md</a>.</p>
-        <ul>
-            <li><strong>Module 0:</strong> Developer Fundamentals (Git, CLI, Docker)</li>
-            <li><strong>Module 1:</strong> Python Programming (55% weight)</li>
-            <li><strong>Module 2:</strong> SQL & Data Manipulation</li>
-            <li><strong>Module 3:</strong> Data Analysis & Visualization</li>
-            <li><strong>Module 4:</strong> Machine Learning Foundations</li>
-            <li><strong>Module 5:</strong> System Design & Deployment</li>
-            <li><strong>Capstone:</strong> End-to-end project deployment</li>
-        </ul>
-        <p>Progress is tracked against 22 weekly assignments aligned with modules.</p>
+    <div class="dashboard-container">
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading Dashboard...</p>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> Data Science 2025 Analytics Dashboard</h1>
+                <div class="header-actions">
+                    <button onclick="refreshDashboard()" class="btn btn-primary">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <button onclick="exportData()" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                    <button onclick="showAbout()" class="btn btn-info">
+                        <i class="fas fa-info-circle"></i> About
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Key Metrics Section -->
+        <section class="metrics-section">
+            <h2 class="section-title">Key Performance Indicators</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3 id="totalStudents">0</h3>
+                        <p>Total Students</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3 id="avgCompletion">0%</h3>
+                        <p>Avg Completion Rate</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3 id="highestScore">0%</h3>
+                        <p>Top Performer</p>
+                        <p class="subtext" id="topPerformerName">N/A</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3 id="totalAssignments">22</h3>
+                        <p>Total Assignments</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <h2 class="section-title">Visual Analytics</h2>
+            <div class="charts-grid">
+                <!-- Completion Distribution -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Completion Distribution</h3>
+                        <div class="chart-toggles">
+                            <button class="chart-toggle active" data-chart="doughnut">Doughnut</button>
+                            <button class="chart-toggle" data-chart="pie">Pie</button>
+                        </div>
+                    </div>
+                    <canvas id="completionChart"></canvas>
+                </div>
+
+                <!-- Assignment Completion -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Assignment Completion Rates</h3>
+                        <div class="chart-toggles">
+                            <button class="chart-toggle active" data-chart="bar">Bar</button>
+                            <button class="chart-toggle" data-chart="line">Line</button>
+                        </div>
+                    </div>
+                    <canvas id="assignmentChart"></canvas>
+                </div>
+
+                <!-- Performance Radar -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Top Performers Radar</h3>
+                        <div class="chart-toggles">
+                            <button class="chart-toggle active" data-chart="radar">Radar</button>
+                            <button class="chart-toggle" data-chart="polarArea">Polar</button>
+                        </div>
+                    </div>
+                    <canvas id="performanceChart"></canvas>
+                </div>
+
+                <!-- Weekly Progress -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Class Progress Over Time</h3>
+                        <div class="chart-toggles">
+                            <button class="chart-toggle active" data-chart="line">Line</button>
+                            <button class="chart-toggle" data-chart="area">Area</button>
+                        </div>
+                    </div>
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Students Table Section -->
+        <section class="table-section">
+            <h2 class="section-title">Student Performance Details</h2>
+            <div class="table-controls">
+                <input type="text" id="studentSearch" placeholder="Search students...">
+                <select id="sortBy">
+                    <option value="completion_rate">Sort by Completion Rate</option>
+                    <option value="name">Sort by Name</option>
+                    <option value="completed">Sort by Completed</option>
+                </select>
+            </div>
+            <div class="table-container">
+                <table class="students-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Student</th>
+                            <th>Completed</th>
+                            <th>Remaining</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <!-- Data populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section class="insights-section">
+            <h2 class="section-title">Actionable Insights & Recommendations</h2>
+            <div class="insights-grid">
+                <!-- Focus Areas -->
+                <div class="insight-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Students Needing Focus</h3>
+                    <div id="focusStudents" class="insight-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Success Patterns -->
+                <div class="insight-card">
+                    <h3><i class="fas fa-chart-line"></i> Success Patterns</h3>
+                    <div id="successPatterns" class="insight-content">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Challenges -->
+                <div class="insight-card">
+                    <h3><i class="fas fa-bar-chart"></i> Key Challenges</h3>
+                    <div id="challenges" class="insight-content">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="insight-card">
+                    <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+                    <div id="recommendations" class="insight-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <div id="lastUpdate" class="last-update">
+                <i class="fas fa-clock"></i> Last updated: Loading...
+            </div>
+        </footer>
     </div>
 
-    <script>
-        // Load completion data
-        fetch('../completion_analysis.json')
-            .then(response => response.json())
-            .then(completionData => {
-                // Load feedback data
-                fetch('../feedback_analysis.json')
-                    .then(response => response.json())
-                    .then(feedbackData => {
-                        const students = Object.values(completionData);
-                        const averageRate = students.reduce((sum, s) => sum + s.completion_rate, 0) / students.length;
-                        document.getElementById('average-rate').textContent = averageRate.toFixed(1);
-
-                        const averageGrade = students.reduce((sum, s) => sum + (s.average_grade || 0), 0) / students.length;
-                        document.getElementById('average-grade').textContent = averageGrade.toFixed(1);
-
-                        // Bar chart for completion rates
-                        const ctx = document.getElementById('completionChart').getContext('2d');
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: students.map(s => s.student),
-                                datasets: [{
-                                    label: 'Completion Rate (%)',
-                                    data: students.map(s => s.completion_rate),
-                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                    borderColor: 'rgba(75, 192, 192, 1)',
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: { scales: { y: { beginAtZero: true, max: 100 } } }
-                        });
-
-                        // Student list with grades
-                        const listDiv = document.getElementById('studentList');
-                        students.sort((a, b) => (b.completion_rate || 0) - (a.completion_rate || 0));
-                        students.forEach(student => {
-                            const div = document.createElement('div');
-                            div.className = 'student';
-                            const grade = feedbackData[student.student] ? feedbackData[student.student].average_grade : 'N/A';
-                            div.innerHTML = `
-                                <h3>${student.student} - Completion: ${student.completion_rate.toFixed(1)}% (${student.completed}/${22}) | Grade: <span class="grade">${grade}</span>%</h3>
-                                <p>Assignments: ${student.assignment_numbers.join(', ')}</p>
-                                <p>Files: ${student.files.length > 0 ? student.files.slice(0, 5).join(', ') + '...' : 'None'}</p>
-                            `;
-                            listDiv.appendChild(div);
-                        });
-                    });
-            });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
