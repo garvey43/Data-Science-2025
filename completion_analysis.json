@@ -193,15 +193,6 @@
       "g2025.ipynb"
     ]
   },
-  "JuniorCarti": {
-    "student": "JuniorCarti",
-    "completed": 0,
-    "remaining": 22,
-    "total_files": 0,
-    "completion_rate": 0.0,
-    "assignment_numbers": [],
-    "files": []
-  },
   "Kigen": {
     "student": "Kigen",
     "completed": 14,
@@ -364,63 +355,6 @@
       "week-17/Assignment17.py",
       "week-07/Assignment7.py",
       "week-15/Assignment 15.py"
-    ]
-  },
-  "Ridge_Junior": {
-    "student": "Ridge_Junior",
-    "completed": 16,
-    "remaining": 6,
-    "total_files": 30,
-    "completion_rate": 72.7,
-    "assignment_numbers": [
-      1,
-      2,
-      5,
-      6,
-      8,
-      9,
-      10,
-      11,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      22
-    ],
-    "files": [
-      "week-04/challenge_1.py",
-      "week-04/challenge_2.py",
-      "week-18/assignment_18.py",
-      "week-16/assignment_16.py",
-      "week-21/password_vault.py",
-      "week-13/assignment_13.py",
-      "week-20/assignment_19_20.py",
-      "week-23/complexity_analysis.py",
-      "week-12/challenge_1.py",
-      "week-12/challenge_2.py",
-      "week-09/assignment_9.py",
-      "week-09/assignment_9_challenge_3.py",
-      "week-09/assignment_9_challenge_2.py",
-      "week-11/assignment_11.py",
-      "week-14/assignment_14.py",
-      "week-22/assignment_22.py",
-      "week-01/assignment_1.py",
-      "week-08/assignment_8.py",
-      "week-02/assignment_2.py",
-      "week-19/assignment_19_20.py",
-      "week-10/assignment_10.py",
-      "week-05/assignment_5_challenge_2.py",
-      "week-05/assignment_5_challenge_1.py",
-      "week-06/assignment_6_challenge_5.py",
-      "week-06/assignment_6_challenge_2.py",
-      "week-06/assignment_6_challenge_1.py",
-      "week-06/assignment_6_challenge_4.py",
-      "week-06/assignment_6_challenge_3.py",
-      "week-17/assignment_17.py",
-      "week-15/assignment_15.py"
     ]
   },
   "Teddy": {
@@ -632,5 +566,15 @@
       "week-10/Assignment_10.ipynb",
       "week-15/Assignment_15&16.ipynb"
     ]
+  }
+  ,
+  "Ridge_Junior": {
+    "student": "Ridge_Junior",
+    "completed": 16,
+    "remaining": 6,
+    "total_files": 30,
+    "completion_rate": 72.7,
+    "assignment_numbers": [1,2,5,6,8,9,10,11,13,14,15,16,17,18,19,22],
+    "files": ["week-04/challenge_1.py","week-04/challenge_2.py","week-18/assignment_18.py","week-16/assignment_16.py","week-21/password_vault.py","week-13/assignment_13.py","week-20/assignment_19_20.py","week-23/complexity_analysis.py","week-12/challenge_1.py","week-12/challenge_2.py","week-09/assignment_9.py","week-09/assignment_9_challenge_3.py","week-09/assignment_9_challenge_2.py","week-11/assignment_11.py","week-14/assignment_14.py","week-22/assignment_22.py","week-01/assignment_1.py","week-08/assignment_8.py","week-02/assignment_2.py","week-19/assignment_19_20.py","week-10/assignment_10.py","week-05/assignment_5_challenge_2.py","week-05/assignment_5_challenge_1.py","week-06/assignment_6_challenge_5.py","week-06/assignment_6_challenge_2.py","week-06/assignment_6_challenge_1.py","week-06/assignment_6_challenge_4.py","week-06/assignment_6_challenge_3.py","week-17/assignment_17.py","week-15/assignment_15.py"]
   }
 }
