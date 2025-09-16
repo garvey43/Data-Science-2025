@@ -3,86 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science 2025 - Student Analytics Dashboard</title>
+    <title>Data Science 2025 - Professional Analytics Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading Dashboard...</p>
+            </div>
+        </div>
+
         <!-- Header -->
         <header class="dashboard-header">
             <div class="header-content">
-                <div class="logo-section">
-                    <i class="fas fa-chart-line"></i>
-                    <div>
-                        <h1>Data Science 2025</h1>
-                        <p>Student Performance Analytics</p>
-                    </div>
-                </div>
+                <h1><i class="fas fa-chart-line"></i> Data Science 2025 Analytics Dashboard</h1>
                 <div class="header-actions">
-                    <button class="refresh-btn" onclick="refreshDashboard()">
+                    <button onclick="refreshDashboard()" class="btn btn-primary">
                         <i class="fas fa-sync-alt"></i> Refresh
                     </button>
-                    <div class="last-update" id="lastUpdate">
-                        <i class="fas fa-clock"></i> Loading...
-                    </div>
+                    <button onclick="exportData()" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                    <button onclick="showAbout()" class="btn btn-info">
+                        <i class="fas fa-info-circle"></i> About
+                    </button>
                 </div>
             </div>
         </header>
 
-        <!-- Key Metrics Cards -->
+        <!-- Key Metrics Section -->
         <section class="metrics-section">
+            <h2 class="section-title">Key Performance Indicators</h2>
             <div class="metrics-grid">
-                <div class="metric-card total-students">
+                <div class="metric-card">
                     <div class="metric-icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="metric-content">
-                        <h3 id="totalStudents">--</h3>
+                        <h3 id="totalStudents">0</h3>
                         <p>Total Students</p>
-                        <span class="metric-trend" id="studentsTrend">
-                            <i class="fas fa-arrow-up"></i> Active
-                        </span>
                     </div>
                 </div>
-
-                <div class="metric-card completion-rate">
+                <div class="metric-card">
                     <div class="metric-icon">
-                        <i class="fas fa-percentage"></i>
+                        <i class="fas fa-chart-bar"></i>
                     </div>
                     <div class="metric-content">
-                        <h3 id="avgCompletion">--%</h3>
-                        <p>Avg Completion</p>
-                        <span class="metric-trend positive" id="completionTrend">
-                            <i class="fas fa-arrow-up"></i> +2.1%
-                        </span>
+                        <h3 id="avgCompletion">0%</h3>
+                        <p>Avg Completion Rate</p>
                     </div>
                 </div>
-
-                <div class="metric-card top-performer">
+                <div class="metric-card">
                     <div class="metric-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
                     <div class="metric-content">
-                        <h3 id="highestScore">--%</h3>
-                        <p>Top Score</p>
-                        <span class="metric-trend" id="topPerformerName">Loading...</span>
+                        <h3 id="highestScore">0%</h3>
+                        <p>Top Performer</p>
+                        <p class="subtext" id="topPerformerName">N/A</p>
                     </div>
                 </div>
-
-                <div class="metric-card assignments-done">
+                <div class="metric-card">
                     <div class="metric-icon">
                         <i class="fas fa-tasks"></i>
                     </div>
                     <div class="metric-content">
-                        <h3 id="totalAssignments">--</h3>
-                        <p>Assignments Tracked</p>
-                        <span class="metric-trend" id="assignmentTrend">
-                            <i class="fas fa-calendar"></i> Updated
-                        </span>
+                        <h3 id="totalAssignments">22</h3>
+                        <p>Total Assignments</p>
                     </div>
                 </div>
             </div>
@@ -90,98 +82,83 @@
 
         <!-- Charts Section -->
         <section class="charts-section">
+            <h2 class="section-title">Visual Analytics</h2>
             <div class="charts-grid">
-                <!-- Completion Overview -->
+                <!-- Completion Distribution -->
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3><i class="fas fa-chart-pie"></i> Completion Distribution</h3>
-                        <div class="chart-controls">
+                        <h3>Completion Distribution</h3>
+                        <div class="chart-toggles">
                             <button class="chart-toggle active" data-chart="doughnut">Doughnut</button>
-                            <button class="chart-toggle" data-chart="bar">Bar</button>
+                            <button class="chart-toggle" data-chart="pie">Pie</button>
                         </div>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="completionChart"></canvas>
-                    </div>
+                    <canvas id="completionChart"></canvas>
                 </div>
 
-                <!-- Assignment Progress -->
+                <!-- Assignment Completion -->
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3><i class="fas fa-chart-bar"></i> Assignment Completion by Number</h3>
-                        <div class="chart-controls">
+                        <h3>Assignment Completion Rates</h3>
+                        <div class="chart-toggles">
                             <button class="chart-toggle active" data-chart="bar">Bar</button>
                             <button class="chart-toggle" data-chart="line">Line</button>
                         </div>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="assignmentChart"></canvas>
-                    </div>
+                    <canvas id="assignmentChart"></canvas>
                 </div>
 
-                <!-- Student Performance Trend -->
+                <!-- Performance Radar -->
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3><i class="fas fa-chart-line"></i> Student Performance Overview</h3>
-                        <div class="chart-controls">
+                        <h3>Top Performers Radar</h3>
+                        <div class="chart-toggles">
                             <button class="chart-toggle active" data-chart="radar">Radar</button>
-                            <button class="chart-toggle" data-chart="horizontalBar">Horizontal</button>
+                            <button class="chart-toggle" data-chart="polarArea">Polar</button>
                         </div>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="performanceChart"></canvas>
-                    </div>
+                    <canvas id="performanceChart"></canvas>
                 </div>
 
                 <!-- Weekly Progress -->
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3><i class="fas fa-calendar-week"></i> Weekly Progress Trend</h3>
-                        <div class="chart-controls">
-                            <button class="chart-toggle active" data-chart="line">Trend</button>
+                        <h3>Class Progress Over Time</h3>
+                        <div class="chart-toggles">
+                            <button class="chart-toggle active" data-chart="line">Line</button>
                             <button class="chart-toggle" data-chart="area">Area</button>
                         </div>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="weeklyChart"></canvas>
-                    </div>
+                    <canvas id="weeklyChart"></canvas>
                 </div>
             </div>
         </section>
 
-        <!-- Students Table -->
-        <section class="students-section">
-            <div class="section-header">
-                <h3><i class="fas fa-users"></i> Student Performance Details</h3>
-                <div class="table-controls">
-                    <input type="text" id="studentSearch" placeholder="Search students..." class="search-input">
-                    <select id="sortBy" class="sort-select">
-                        <option value="completion_rate">Sort by Completion</option>
-                        <option value="name">Sort by Name</option>
-                        <option value="completed">Sort by Completed</option>
-                    </select>
-                </div>
+        <!-- Students Table Section -->
+        <section class="table-section">
+            <h2 class="section-title">Student Performance Details</h2>
+            <div class="table-controls">
+                <input type="text" id="studentSearch" placeholder="Search students...">
+                <select id="sortBy">
+                    <option value="completion_rate">Sort by Completion Rate</option>
+                    <option value="name">Sort by Name</option>
+                    <option value="completed">Sort by Completed</option>
+                </select>
             </div>
-
             <div class="table-container">
-                <table id="studentsTable">
+                <table class="students-table">
                     <thead>
                         <tr>
-                            <th>Rank</th>
+                            <th>#</th>
                             <th>Student</th>
                             <th>Completed</th>
                             <th>Remaining</th>
-                            <th>Completion Rate</th>
                             <th>Progress</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="studentsTableBody">
-                        <tr>
-                            <td colspan="7" class="loading">
-                                <i class="fas fa-spinner fa-spin"></i> Loading student data...
-                            </td>
-                        </tr>
+                        <!-- Data populated by JavaScript -->
                     </tbody>
                 </table>
             </div>
@@ -189,52 +166,37 @@
 
         <!-- Insights Section -->
         <section class="insights-section">
+            <h2 class="section-title">Actionable Insights & Recommendations</h2>
             <div class="insights-grid">
-                <div class="insight-card focus-areas">
-                    <div class="insight-header">
-                        <i class="fas fa-bullseye"></i>
-                        <h4>Focus Areas</h4>
-                    </div>
-                    <div class="insight-content">
-                        <div id="focusStudents" class="insight-list">
-                            <div class="loading">Analyzing...</div>
-                        </div>
+                <!-- Focus Areas -->
+                <div class="insight-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Students Needing Focus</h3>
+                    <div id="focusStudents" class="insight-list">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
 
-                <div class="insight-card success-patterns">
-                    <div class="insight-header">
-                        <i class="fas fa-lightbulb"></i>
-                        <h4>Success Patterns</h4>
-                    </div>
-                    <div class="insight-content">
-                        <div id="successPatterns" class="insight-text">
-                            <div class="loading">Analyzing...</div>
-                        </div>
+                <!-- Success Patterns -->
+                <div class="insight-card">
+                    <h3><i class="fas fa-chart-line"></i> Success Patterns</h3>
+                    <div id="successPatterns" class="insight-content">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
 
-                <div class="insight-card challenges">
-                    <div class="insight-header">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h4>Challenges</h4>
-                    </div>
-                    <div class="insight-content">
-                        <div id="challenges" class="insight-text">
-                            <div class="loading">Analyzing...</div>
-                        </div>
+                <!-- Challenges -->
+                <div class="insight-card">
+                    <h3><i class="fas fa-bar-chart"></i> Key Challenges</h3>
+                    <div id="challenges" class="insight-content">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
 
-                <div class="insight-card recommendations">
-                    <div class="insight-header">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h4>Recommendations</h4>
-                    </div>
-                    <div class="insight-content">
-                        <div id="recommendations" class="insight-list">
-                            <div class="loading">Generating...</div>
-                        </div>
+                <!-- Recommendations -->
+                <div class="insight-card">
+                    <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+                    <div id="recommendations" class="insight-list">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </div>
@@ -242,23 +204,10 @@
 
         <!-- Footer -->
         <footer class="dashboard-footer">
-            <div class="footer-content">
-                <p>&copy; 2025 Data Science 2025 - Student Analytics Dashboard</p>
-                <div class="footer-links">
-                    <a href="#" onclick="exportData()"><i class="fas fa-download"></i> Export Data</a>
-                    <a href="#" onclick="showAbout()"><i class="fas fa-info-circle"></i> About</a>
-                </div>
+            <div id="lastUpdate" class="last-update">
+                <i class="fas fa-clock"></i> Last updated: Loading...
             </div>
         </footer>
-    </div>
-
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-content">
-            <i class="fas fa-chart-line fa-spin"></i>
-            <h3>Loading Dashboard...</h3>
-            <p>Analyzing student performance data</p>
-        </div>
     </div>
 
     <script src="script.js"></script>
