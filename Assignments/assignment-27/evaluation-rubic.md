@@ -41,7 +41,7 @@
 - **D3.js:** [D3.js Tutorials](https://observablehq.com/@d3/learn-d3)
 - **Visualization Best Practices:** [Data Visualization Society](https://www.datavisualizationsociety.org/)
 
-## 📋 Example Dashboard Structure
+##  Example Dashboard Structure
 
 
 TITANIC SURVIVAL DASHBOARD
