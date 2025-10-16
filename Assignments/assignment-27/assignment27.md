@@ -8,7 +8,7 @@ Now here's Assignment 2 focused on visualization:
 
 **Due Date:** November 1, 2024  
 **Points:** 100 points  
-**Dataset:** Your cleaned Titanic dataset from Assignment 1  
+**Dataset:** Your cleaned Titanic dataset from Assignment 26  
 **Tools:** Tableau Public, Power BI, or Python (Plotly/Dash)  
 **Objective:** Create compelling visualizations and an interactive dashboard to communicate Titanic survival insights
 
