@@ -107,9 +107,3 @@ assignment-26/
 ├── cleaned_titanic.csv
 └── README.md # Brief explanation of your approach
 ---
-
-
-##  Submission Format
-
----
-
