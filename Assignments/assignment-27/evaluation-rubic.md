@@ -45,6 +45,7 @@
 
 
 TITANIC SURVIVAL DASHBOARD
+
 ───────────────────────────
 
 [Filters Panel]
