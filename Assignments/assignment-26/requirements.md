@@ -103,7 +103,10 @@ Include:
 ##  Submission Format
 
 assignment-26/
+
 ├── titanic_analysis.ipynb
+
 ├── cleaned_titanic.csv
+
 └── README.md # Brief explanation of your approach
 
