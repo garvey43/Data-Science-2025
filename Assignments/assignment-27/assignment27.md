@@ -128,3 +128,13 @@ Create 5 core visualizations that reveal key insights about the Titanic disaster
    - D3.js: HTML, CSS, and JavaScript files
 
 ### **Submission Structure:**
+
+assignment2/
+
+├── dashboard/ (or source files)
+
+├── documentation.pdf
+
+├── screenshots/ (folder with PNG screenshots)
+
+└── README.md (setup instructions)
