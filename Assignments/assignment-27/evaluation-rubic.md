@@ -46,6 +46,7 @@
 
 TITANIC SURVIVAL DASHBOARD
 ───────────────────────────
+
 [Filters Panel]
 
 ├── Gender: ○ All ● Male ● Female
