@@ -113,7 +113,7 @@ assignment-26/
 
 ---
 
-## 🧮 Evaluation Criteria
+##  Evaluation Criteria
 
 | **Criteria** | **Points** | **Description** |
 |---------------|------------|-----------------|
@@ -126,14 +126,14 @@ assignment-26/
 
 ---
 
-## 🌟 Bonus Challenge (Extra 10 points)
+##  Bonus Challenge (Extra 10 points)
 
 Identify and analyze **at least 3 data quality issues** that could lead to misleading conclusions if not properly addressed.  
 For each issue, propose a clear and practical solution.
 
 ---
 
-## 📚 Learning Resources
+##  Learning Resources
 
 - **Pandas Documentation:** [https://pandas.pydata.org/docs/](https://pandas.pydata.org/docs/)  
 - **Data Cleaning Best Practices:** [https://towardsdatascience.com/data-cleaning-in-python-the-ultimate-guide-2020-c63b88bf0a0d](https://towardsdatascience.com/data-cleaning-in-python-the-ultimate-guide-2020-c63b88bf0a0d)  
@@ -141,6 +141,6 @@ For each issue, propose a clear and practical solution.
 
 ---
 
-✅ **Tip:** Commit this file as `requirements.md` in your GitHub repo so collaborators can reference it easily when working on `titanic_analysis.ipynb`.
+ **Tip:** Commit this file as `requirements.md` in your GitHub repo so collaborators can reference it easily when working on `titanic_analysis.ipynb`.
 
 
