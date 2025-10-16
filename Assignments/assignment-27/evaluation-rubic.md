@@ -47,32 +47,52 @@
 TITANIC SURVIVAL DASHBOARD
 ───────────────────────────
 [Filters Panel]
+
 ├── Gender: ○ All ● Male ● Female
+
 ├── Passenger Class: ● All ○ 1st ○ 2nd ○ 3rd
+
 ├── Age Group: ● All ○ Child ○ Teen ○ Adult ○ Middle ○ Senior
+
 └── Embarkation Port: ● All ○ S ○ C ○ Q
 
 [Main Dashboard]
+
 ├── TOP ROW: Key Metrics
+
 │ ├── Total Passengers: 891
+
 │ ├── Overall Survival: 38%
+
 │ ├── Female Survival: 74%
+
 │ └── 1st Class Survival: 63%
+
 │
+
 ├── MIDDLE ROW: Core Visualizations
+
 │ ├── Survival by Demographics (Grouped Bar Chart)
+
 │ ├── Age vs Fare Scatter Plot
+
 │ └── Family Impact Analysis
+
 │
+
 └── BOTTOM ROW: Detailed Analysis
+
 ├── Geographic Distribution
+
 ├── Ticket Class Patterns
+
 └── Anomaly Detection
 
-text
+
+
 
 ---
 
 **Remember: The goal is not just to create pretty charts, but to build an analytical tool that helps users understand the complex survival patterns of the Titanic disaster. Focus on clarity, insight, and user experience.**
 
-**Submit your dashboard and documentation by the due date. Be prepared to present your key findings in class!**
+**Submit your dashboard and documentation by the due date!**
