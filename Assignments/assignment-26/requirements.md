@@ -141,6 +141,6 @@ For each issue, propose a clear and practical solution.
 
 ---
 
- **Tip:** Commit this file as `requirements.md` in your GitHub repo so collaborators can reference it easily when working on `titanic_analysis.ipynb`.
+
 
 
