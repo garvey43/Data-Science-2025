@@ -544,7 +544,7 @@
     "student": "john_onyancha",
     "completed": 18,
     "remaining": 4,
-    "total_files": 31,
+    "total_files": 32,
     "completion_rate": 81.8,
     "assignment_numbers": [
       1,
@@ -585,6 +585,7 @@
       "assignment_2.py",
       "assignment_17.py",
       "assignment_6.py",
+      "assignment60.py",
       "week-05/guessinggames.p;y.py",
       "week-01/personal_profile.py",
       "week-01/johnNyangara_assign1&2.ipynb",
