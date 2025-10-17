@@ -56,7 +56,7 @@ class ProfessionalDashboard {
 
     async loadCSVData() {
         try {
-            const response = await fetch('./completion_analysis.csv');
+            const response = await fetch('completion_analysis.csv');
             if (!response.ok) {
                 throw new Error('CSV file not found');
             }
