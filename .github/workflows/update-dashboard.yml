@@ -29,7 +29,7 @@ jobs:
         run: |
           python update_dashboard.py || python analyze_completion.py
 
-            - name: Commit and push changes
+      - name: Commit and push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
