@@ -1,0 +1,38 @@
+name: Update Dashboard Data
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Runs every 6 hours
+  workflow_dispatch:        # Allows manual trigger from GitHub
+  push:
+    branches:
+      - main
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run data update script
+        run: |
+          python update_dashboard.py || python analyze_completion.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add completion_analysis.csv completion_analysis.json dashboard_grading_history.csv grading_results_all_students.json || true
+          git commit -m "Auto-update dashboard data" || echo "No changes to commit"
+          git push
