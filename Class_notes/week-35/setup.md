@@ -145,7 +145,7 @@ try:
     from pyspark.sql import SparkSession
     print(" PySpark: OK")
 except ImportError as e:
-    print(f"❌ PySpark missing: {e}")
+    print(f" PySpark missing: {e}")
 
 # Check Java
 import subprocess
