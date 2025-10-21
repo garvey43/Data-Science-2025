@@ -124,7 +124,7 @@ Run this verification script to ensure everything is working:
 # ENVIRONMENT VERIFICATION SCRIPT
 # =============================================
 
-print("🔍 Verifying Hadoop Demo Environment...")
+print(" Verifying Hadoop Demo Environment...")
 
 # Check Python version
 import sys
@@ -136,14 +136,14 @@ try:
     import numpy as np
     import matplotlib.pyplot as plt
     import seaborn as sns
-    print("✅ Core data science packages: OK")
+    print(" Core data science packages: OK")
 except ImportError as e:
-    print(f"❌ Core packages missing: {e}")
+    print(f" Core packages missing: {e}")
 
 # Check PySpark
 try:
     from pyspark.sql import SparkSession
-    print("✅ PySpark: OK")
+    print(" PySpark: OK")
 except ImportError as e:
     print(f"❌ PySpark missing: {e}")
 
@@ -152,18 +152,18 @@ import subprocess
 try:
     result = subprocess.run(['java', '-version'], capture_output=True, text=True)
     if result.returncode == 0:
-        print("✅ Java: OK")
+        print(" Java: OK")
     else:
-        print("❌ Java: Missing or not in PATH")
+        print(" Java: Missing or not in PATH")
 except:
-    print("❌ Java: Not found")
+    print(" Java: Not found")
 
 # Check dataset
 import os
 if os.path.exists('titanic.csv'):
-    print("✅ Dataset: OK")
+    print(" Dataset: OK")
 else:
-    print("❌ Dataset: titanic.csv not found")
+    print(" Dataset: titanic.csv not found")
 
 print("\n🎯 If all checks pass, you're ready to run the demo!")
 ```
@@ -315,4 +315,4 @@ Once your environment is set up:
 3. Try different datasets
 4. Explore PySpark documentation for advanced features
 
-Happy learning! 🚀
+Happy learning! 
