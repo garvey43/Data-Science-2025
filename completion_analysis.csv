@@ -1,6 +1,6 @@
 Student,Completed,Remaining,Completion_Rate,Total_Files,Status,Assignment_Numbers
 Denzel,13,9,59.1,16,Incomplete,"1,2,6,7,8,10,11,12,13,15,16,17,18"
-Elsa,11,11,50.0,41,Incomplete,"1,2,7,10,12,13,15,16,17,18,21"
+Elsa,17,5,77.3,41,Incomplete,"1,2,3,4,5,7,10,11,12,13,14,15,16,17,18,21,22"
 Felix,8,14,36.4,15,Incomplete,"1,2,6,7,11,14,17,21"
 Frank,0,22,0.0,0,Incomplete,
 Garvey,11,11,50.0,28,Incomplete,"1,2,3,4,6,8,10,17,18,21,22"
